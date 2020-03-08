@@ -6,7 +6,7 @@
 package gestionrendezvous.bean;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,6 +33,7 @@ public class Personne implements Serializable {
     private String city;
     private String address;
     private String password;
+    private List<RendezVous> rendezVous;
 
     public Long getId() {
         return id;
@@ -221,7 +222,15 @@ public class Personne implements Serializable {
         this.password = password;
     }
 
-    public Personne(Long id, String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String country, String city, String address, String password) {
+    public List<RendezVous> getRendezVous() {
+        return rendezVous;
+    }
+
+    public void setRendezVous(List<RendezVous> rendezVous) {
+        this.rendezVous = rendezVous;
+    }
+
+    public Personne(Long id, String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String country, String city, String address, String password, List<RendezVous> rendezVous) {
         this.id = id;
         this.CNI = CNI;
         this.lastName = lastName;
@@ -233,8 +242,12 @@ public class Personne implements Serializable {
         this.city = city;
         this.address = address;
         this.password = password;
+        this.rendezVous = rendezVous;
     }
 
+    
+
     public Personne() {
+        super();
     }
 }
