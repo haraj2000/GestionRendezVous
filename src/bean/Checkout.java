@@ -3,11 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gestionrendezvous.bean;
+package bean;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,14 +16,12 @@ import javax.persistence.Id;
  * @author Haraj
  */
 @Entity
-public class Assistant extends Personne implements Serializable {
+public class Checkout implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private List<Date> workDays;
-    private List<RendezVous> rendezVous;
 
     public Long getId() {
         return id;
@@ -34,20 +30,6 @@ public class Assistant extends Personne implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
-    public List<Date> getWorkDays() {
-        return workDays;
-    }
-
-    public void setWorkDays(List<Date> workDays) {
-        this.workDays = workDays;
-    }
-
-    public Assistant(Long id, List<Date> workDays) {
-        this.id = id;
-        this.workDays = workDays;
-    }
-    
 
     @Override
     public int hashCode() {
@@ -59,14 +41,19 @@ public class Assistant extends Personne implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Assistant)) {
+        if (!(object instanceof Checkout)) {
             return false;
         }
-        Assistant other = (Assistant) object;
+        Checkout other = (Checkout) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "gestionrendezvous.bean.Checkout[ id=" + id + " ]";
     }
     
 }

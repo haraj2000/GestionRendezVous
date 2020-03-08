@@ -3,32 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gestionrendezvous.bean;
+package bean;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author Haraj
  */
 @Entity
-public class Consultation implements Serializable {
+public class Service implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Date date;
-    private String doctorName;
-    private String patientName;
-    @ManyToOne
-    private Patient patient;
+    private String reference;
+    private String libelle;
+    @OneToMany(mappedBy = "service")
+    private List<Doctor> doctors;
+    @OneToMany(mappedBy = "service")
+    private List<Nurse> nurses;
 
     public Long getId() {
         return id;
@@ -38,36 +39,42 @@ public class Consultation implements Serializable {
         this.id = id;
     }
 
-    public Date getDate() {
-        return date;
+    public String getReference() {
+        return reference;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
-    public String getDoctorName() {
-        return doctorName;
+    public String getLibelle() {
+        return libelle;
     }
 
-    public void setDoctorName(String doctorName) {
-        this.doctorName = doctorName;
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
     }
 
-    public String getPatientName() {
-        return patientName;
+    public List<Doctor> getDoctors() {
+        return doctors;
     }
 
-    public void setPatientName(String patientName) {
-        this.patientName = patientName;
+    public void setDoctors(List<Doctor> doctors) {
+        this.doctors = doctors;
     }
 
-    public Consultation(Date date, String doctorName, String patientName) {
-        this.date = date;
-        this.doctorName = doctorName;
-        this.patientName = patientName;
+    public List<Nurse> getNurses() {
+        return nurses;
     }
-    
+
+    public void setNurses(List<Nurse> nurses) {
+        this.nurses = nurses;
+    }
+
+    public Service(String reference, String libelle) {
+        this.reference = reference;
+        this.libelle = libelle;
+    }
 
     @Override
     public int hashCode() {
@@ -79,21 +86,14 @@ public class Consultation implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Consultation)) {
+        if (!(object instanceof Service)) {
             return false;
         }
-        Consultation other = (Consultation) object;
+        Service other = (Service) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Consultation{" + "id=" + id + ", date=" + date + ", doctorName=" + doctorName + ", patientName=" + patientName + '}';
-    }
-
-   
-    
 }

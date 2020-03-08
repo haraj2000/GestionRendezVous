@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gestionrendezvous.service;
+package service;
 
 /**
  *
  * @author Haraj
  */
-public class DoctorService {
+public class AssistantService {
     
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gestionrendezvous.bean;
+package bean;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -24,10 +26,15 @@ public class Nurse extends Personne implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @ManyToOne
     private Service service;
-    private List<Doctor> doctors;
+    private Doctor doctor;
+    @OneToMany(mappedBy = "nurse")
     private List<PatientFile> patientsFile;
+    @OneToMany(mappedBy = "nurse")
     private List<Consultation> consultations;
+    @OneToMany(mappedBy = "nurse")
+    private List<RendezVous> rendezVous;
     private List<Date> workDays;
 
     public Long getId() {
@@ -37,7 +44,6 @@ public class Nurse extends Personne implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-    
 
     public Service getService() {
         return service;
@@ -63,14 +69,6 @@ public class Nurse extends Personne implements Serializable {
         this.consultations = consultations;
     }
 
-    public List<Doctor> getDoctors() {
-        return doctors;
-    }
-
-    public void setDoctors(List<Doctor> doctors) {
-        this.doctors = doctors;
-    }
-
     public List<Date> getWorkDays() {
         return workDays;
     }
@@ -79,21 +77,27 @@ public class Nurse extends Personne implements Serializable {
         this.workDays = workDays;
     }
 
-    public Nurse(Long id, Service service, List<Doctor> doctors, List<PatientFile> patientsFile, List<Consultation> consultations, List<Date> workDays) {
-        this.id = id;
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+    public List<RendezVous> getRendezVous() {
+        return rendezVous;
+    }
+
+    public void setRendezVous(List<RendezVous> rendezVous) {
+        this.rendezVous = rendezVous;
+    }
+
+    public Nurse(Service service, Doctor doctor, String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String country, String city, String address, String password) {
+        super(CNI, lastName, FirstName, sexe, mail, phoneNumber, country, city, address, password);
         this.service = service;
-        this.doctors = doctors;
-        this.patientsFile = patientsFile;
-        this.consultations = consultations;
-        this.workDays = workDays;
+        this.doctor = doctor;
     }
-
-    
-
-    public Nurse() {
-        super();
-    }
-
     
     @Override
     public int hashCode() {
@@ -115,9 +119,4 @@ public class Nurse extends Personne implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "gestionrendezvous.bean.Infermier[ id=" + id + " ]";
-    }
-    
 }

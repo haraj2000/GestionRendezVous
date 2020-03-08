@@ -3,27 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gestionrendezvous.bean;
+package bean;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author Haraj
  */
 @Entity
-public class Insurance implements Serializable {
+public class Assistant extends Personne implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String insuranceType;
-    protected double monthlyCost;
+    private List<Date> workDays;
+    @OneToMany(mappedBy = "assistant")
+    private List<RendezVous> rendezVous;
+    @OneToMany
+    private List<Checkout> checkout;
 
     public Long getId() {
         return id;
@@ -33,25 +39,32 @@ public class Insurance implements Serializable {
         this.id = id;
     }
 
-    public String getInsuranceType() {
-        return insuranceType;
+    public List<Date> getWorkDays() {
+        return workDays;
     }
 
-    public void setInsuranceType(String insuranceType) {
-        this.insuranceType = insuranceType;
+    public void setWorkDays(List<Date> workDays) {
+        this.workDays = workDays;
     }
 
-    public double getMonthlyCost() {
-        return monthlyCost;
+    public List<RendezVous> getRendezVous() {
+        return rendezVous;
     }
 
-    public void setMonthlyCost(double monthlyCost) {
-        this.monthlyCost = monthlyCost;
+    public void setRendezVous(List<RendezVous> rendezVous) {
+        this.rendezVous = rendezVous;
     }
 
-    public Insurance(String insuranceType, double monthlyCost) {
-        this.insuranceType = insuranceType;
-        this.monthlyCost = monthlyCost;
+    public List<Checkout> getCheckout() {
+        return checkout;
+    }
+
+    public void setCheckout(List<Checkout> checkout) {
+        this.checkout = checkout;
+    }
+
+    public Assistant(String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String country, String city, String address, String password) {
+        super(CNI, lastName, FirstName, sexe, mail, phoneNumber, country, city, address, password);
     }
     
 
@@ -65,21 +78,14 @@ public class Insurance implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Insurance)) {
+        if (!(object instanceof Assistant)) {
             return false;
         }
-        Insurance other = (Insurance) object;
+        Assistant other = (Assistant) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
     }
-
-    @Override
-    public String toString() {
-        return "Insurance{" + "id=" + id + ", insuranceType=" + insuranceType + ", monthlyCost=" + monthlyCost + '}';
-    }
-
-  
     
 }

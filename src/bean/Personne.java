@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gestionrendezvous.bean;
+package bean;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,7 +32,6 @@ abstract class Personne implements Serializable {
     private String city;
     private String address;
     private String password;
-    private List<RendezVous> rendezVous;
 
     public Long getId() {
         return id;
@@ -61,11 +59,6 @@ abstract class Personne implements Serializable {
             return false;
         }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "gestionrendezvous.bean.User[ id=" + getId() + " ]";
     }
 
     /**
@@ -222,16 +215,7 @@ abstract class Personne implements Serializable {
         this.password = password;
     }
 
-    public List<RendezVous> getRendezVous() {
-        return rendezVous;
-    }
-
-    public void setRendezVous(List<RendezVous> rendezVous) {
-        this.rendezVous = rendezVous;
-    }
-
-    public Personne(Long id, String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String country, String city, String address, String password, List<RendezVous> rendezVous) {
-        this.id = id;
+    public Personne(String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String country, String city, String address, String password) {
         this.CNI = CNI;
         this.lastName = lastName;
         this.FirstName = FirstName;
@@ -242,12 +226,5 @@ abstract class Personne implements Serializable {
         this.city = city;
         this.address = address;
         this.password = password;
-        this.rendezVous = rendezVous;
-    }
-
-    
-
-    public Personne() {
-        super();
-    }
+    } 
 }

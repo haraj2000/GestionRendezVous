@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gestionrendezvous.bean;
+package bean;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,31 +13,31 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 /**
  *
  * @author Haraj
  */
 @Entity
-public class Patient extends Personne implements Serializable {
+public class PatientFile implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Service service;
-    private int age;
-    private List<Consultation> consultations;
-    @OneToOne
-    private PatientFile file;
+    private Patient patient;
+    private float weight;
+    private float height;
+    private String bloodGroup;
+    private int tension;
+    @ManyToOne
+    private Insurance insurance;
     @ManyToOne
     private Doctor doctor;
-    @OneToMany(mappedBy = "patient")
-    private List<RendezVous> rendezVouses; 
-    
-    
-    
+    @OneToMany(mappedBy = "patientFile")
+    private List<Consultation> consultations;
+    private int consultationsNumber = consultations.size();
+
     public Long getId() {
         return id;
     }
@@ -46,20 +46,44 @@ public class Patient extends Personne implements Serializable {
         this.id = id;
     }
 
-    public Service getService() {
-        return service;
+    public Patient getPatient() {
+        return patient;
     }
 
-    public void setService(Service service) {
-        this.service = service;
+    public void setPatient(Patient patient) {
+        this.patient = patient;
     }
 
-    public int getAge() {
-        return age;
+    public float getWeight() {
+        return weight;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setWeight(float weight) {
+        this.weight = weight;
+    }
+
+    public float getHeight() {
+        return height;
+    }
+
+    public void setHeight(float height) {
+        this.height = height;
+    }
+
+    public String getBloodGroup() {
+        return bloodGroup;
+    }
+
+    public void setBloodGroup(String bloodGroup) {
+        this.bloodGroup = bloodGroup;
+    }
+
+    public int getTension() {
+        return tension;
+    }
+
+    public void setTension(int tension) {
+        this.tension = tension;
     }
 
     public Doctor getDoctor() {
@@ -78,23 +102,22 @@ public class Patient extends Personne implements Serializable {
         this.consultations = consultations;
     }
 
-    public PatientFile getFile() {
-        return file;
+    public Insurance getInsurance() {
+        return insurance;
     }
 
-    public void setFile(PatientFile file) {
-        this.file = file;
-        
+    public void setInsurance(Insurance insurance) {
+        this.insurance = insurance;
     }
 
-    public List<RendezVous> getRendezVouses() {
-        return rendezVouses;
+    public PatientFile(Patient patient, float weight, float height, String bloodGroup, int tension, Insurance insurance) {
+        this.patient = patient;
+        this.weight = weight;
+        this.height = height;
+        this.bloodGroup = bloodGroup;
+        this.tension = tension;
+        this.insurance = insurance;
     }
-
-    public void setRendezVouses(List<RendezVous> rendezVouses) {
-        this.rendezVouses = rendezVouses;
-    }
-    
 
     @Override
     public int hashCode() {
@@ -106,37 +129,13 @@ public class Patient extends Personne implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Patient)) {
+        if (!(object instanceof PatientFile)) {
             return false;
         }
-        Patient other = (Patient) object;
+        PatientFile other = (PatientFile) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
-    }
-
-    public Patient(Long id, Service service, String FullName, Long phoneNumber, int age, List<Consultation> consultations, PatientFile file) {
-        this.service = service;
-        this.age = age;
-        this.consultations = consultations;
-        this.file = file;
-        this.doctor=doctor;
-    }
-
-    public Patient() {
-    }
-
-    @Override
-    public String toString() {
-        return "Patient{" + "id=" + id + ", service=" + service + ", age=" + age + ", consultations=" + consultations + ", file=" + file + ", doctor=" + doctor + ", rendezVouses=" + rendezVouses + '}';
-    }
-
-
-    
-
-  
-    
-   
-    
+    } 
 }

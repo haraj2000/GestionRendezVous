@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gestionrendezvous.bean;
+package bean;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -14,7 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -27,14 +27,17 @@ public class Doctor extends Personne implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private Service service;
-    private Date workDay;
     @ManyToOne
+    private Service service;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date workDays;
     private Nurse nurse;
     @OneToMany(mappedBy = "doctor")
-    private List<Patient> patients;
+    private List<PatientFile> patientFiles;
     @OneToMany(mappedBy = "doctor")
-    private List<RendezVous> rendezVouss;
+    private List<RendezVous> rendezVous;
+    @OneToMany(mappedBy = "doctor")
+    private List<Consultation> consultations;
      
 
     public Long getId() {
@@ -53,6 +56,14 @@ public class Doctor extends Personne implements Serializable {
         this.service = service;
     }
 
+    public Date getWorkDays() {
+        return workDays;
+    }
+
+    public void setWorkDays(Date workDays) {
+        this.workDays = workDays;
+    }
+
     public Nurse getNurse() {
         return nurse;
     }
@@ -61,47 +72,35 @@ public class Doctor extends Personne implements Serializable {
         this.nurse = nurse;
     }
 
-    public List<Patient> getPatients() {
-        return patients;
+    public List<PatientFile> getPatientFiles() {
+        return patientFiles;
     }
 
-    public void setPatients(List<Patient> patients) {
-        this.patients = patients;
+    public void setPatientFiles(List<PatientFile> patientFiles) {
+        this.patientFiles = patientFiles;
     }
 
-    public List<RendezVous> getRendezVouss() {
-        return rendezVouss;
+    public List<RendezVous> getRendezVous() {
+        return rendezVous;
     }
 
-    public void setRendezVouss(List<RendezVous> rendezVouss) {
-        this.rendezVouss = rendezVouss;
+    public void setRendezVous(List<RendezVous> rendezVous) {
+        this.rendezVous = rendezVous;
     }
 
-    public Date getWorkDay() {
-        return workDay;
+    public List<Consultation> getConsultations() {
+        return consultations;
     }
 
-    public void setWorkDay(Date workDay) {
-        this.workDay = workDay;
+    public void setConsultations(List<Consultation> consultations) {
+        this.consultations = consultations;
     }
 
-    public Doctor( Service service, Date workDay, Nurse nurse, List<Patient> patients, List<RendezVous> rendezVouss, Long id, String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String country, String city, String address, String password, List<RendezVous> rendezVous) {
-        super(id, CNI, lastName, FirstName, sexe, mail, phoneNumber, country, city, address, password, rendezVous);
-    
+    public Doctor(Service service, Nurse nurse, String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String country, String city, String address, String password) {
+        super(CNI, lastName, FirstName, sexe, mail, phoneNumber, country, city, address, password);
         this.service = service;
-        this.workDay = workDay;
         this.nurse = nurse;
-        this.patients = patients;
-        this.rendezVouss = rendezVouss;
     }
-    
-
-   
-
-    public Doctor() {
-    }
-    
-    
 
     @Override
     public int hashCode() {
@@ -123,14 +122,4 @@ public class Doctor extends Personne implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "Doctor{" + "id=" + id + ", service=" + service + ", workDay=" + workDay + ", nurse=" + nurse + ", patients=" + patients + ", rendezVouss=" + rendezVouss + '}';
-    }
-
-   
-    
-
-  
-    
 }

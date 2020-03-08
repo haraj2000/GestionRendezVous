@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gestionrendezvous.bean;
+package bean;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -28,11 +29,15 @@ public class RendezVous implements Serializable {
     private Date date;
     @Temporal(javax.persistence.TemporalType.TIME)
     private Date hour;
+    private String etat;
+    @ManyToOne
     private Patient patient;
+    @ManyToOne
     private Doctor doctor;
+    @ManyToOne
     private Nurse nurse;
+    @ManyToOne
     private Service service;
-    private Assistant assistant;
 
     public Long getId() {
         return id;
@@ -90,31 +95,13 @@ public class RendezVous implements Serializable {
         this.service = service;
     }
 
-    public Assistant getAssistant() {
-        return assistant;
-    }
-
-    public void setAssistant(Assistant assistant) {
-        this.assistant = assistant;
-    }
-
-    public RendezVous(Long id, Date date, Date hour, Patient patient, Doctor doctor, Nurse nurse, Service service, Assistant assistant) {
-        this.id = id;
+    public RendezVous(Date date, Date hour, Patient patient, Doctor doctor, Service service) {
         this.date = date;
         this.hour = hour;
         this.patient = patient;
         this.doctor = doctor;
-        this.nurse = nurse;
         this.service = service;
-        this.assistant = assistant;
     }
-
-    
-
-    public RendezVous() {
-        super();
-    }
-
     
     
     @Override
@@ -137,10 +124,5 @@ public class RendezVous implements Serializable {
         }
         return true;
     }
-
-    @Override
-    public String toString() {
-        return "gestionrendezvous.bean.RendezVous[ id=" + id + " ]";
-    }
-    
+  
 }
