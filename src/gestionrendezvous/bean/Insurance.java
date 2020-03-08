@@ -22,6 +22,8 @@ public class Insurance implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String insuranceType;
+    protected double monthlyCost;
 
     public Long getId() {
         return id;
@@ -30,6 +32,28 @@ public class Insurance implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public String getInsuranceType() {
+        return insuranceType;
+    }
+
+    public void setInsuranceType(String insuranceType) {
+        this.insuranceType = insuranceType;
+    }
+
+    public double getMonthlyCost() {
+        return monthlyCost;
+    }
+
+    public void setMonthlyCost(double monthlyCost) {
+        this.monthlyCost = monthlyCost;
+    }
+
+    public Insurance(String insuranceType, double monthlyCost) {
+        this.insuranceType = insuranceType;
+        this.monthlyCost = monthlyCost;
+    }
+    
 
     @Override
     public int hashCode() {
@@ -53,7 +77,9 @@ public class Insurance implements Serializable {
 
     @Override
     public String toString() {
-        return "gestionrendezvous.bean.Insurance[ id=" + id + " ]";
+        return "Insurance{" + "id=" + id + ", insuranceType=" + insuranceType + ", monthlyCost=" + monthlyCost + '}';
     }
+
+  
     
 }

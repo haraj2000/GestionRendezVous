@@ -6,10 +6,12 @@
 package gestionrendezvous.bean;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -22,6 +24,11 @@ public class Consultation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private Date date;
+    private String doctorName;
+    private String patientName;
+    @ManyToOne
+    private Patient patient;
 
     public Long getId() {
         return id;
@@ -30,6 +37,37 @@ public class Consultation implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
+    }
+
+    public String getPatientName() {
+        return patientName;
+    }
+
+    public void setPatientName(String patientName) {
+        this.patientName = patientName;
+    }
+
+    public Consultation(Date date, String doctorName, String patientName) {
+        this.date = date;
+        this.doctorName = doctorName;
+        this.patientName = patientName;
+    }
+    
 
     @Override
     public int hashCode() {
@@ -53,7 +91,9 @@ public class Consultation implements Serializable {
 
     @Override
     public String toString() {
-        return "gestionrendezvous.bean.Consultation[ id=" + id + " ]";
+        return "Consultation{" + "id=" + id + ", date=" + date + ", doctorName=" + doctorName + ", patientName=" + patientName + '}';
     }
+
+   
     
 }
