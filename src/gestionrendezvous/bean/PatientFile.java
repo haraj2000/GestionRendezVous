@@ -28,6 +28,7 @@ public class PatientFile implements Serializable {
     private float height;
     private String bloodGroup;
     private Insurance insurance;
+    private Nurse nurse;
     private List<Doctor> doctors;
     private List<Consultation> consultations;
     private int consultationsNumber = consultations.size();
@@ -100,17 +101,25 @@ public class PatientFile implements Serializable {
         return consultationsNumber;
     }
 
-    public PatientFile(Long id, Patient patient, float weight, float height, String bloodGroup, Insurance insurance, List<Doctor> doctors, List<Consultation> consultations) {
+    public Nurse getNurse() {
+        return nurse;
+    }
+
+    public void setNurse(Nurse nurse) {
+        this.nurse = nurse;
+    }
+
+    public PatientFile(Long id, Patient patient, float weight, float height, String bloodGroup, Insurance insurance, Nurse nurse, List<Doctor> doctors, List<Consultation> consultations) {
         this.id = id;
         this.patient = patient;
         this.weight = weight;
         this.height = height;
         this.bloodGroup = bloodGroup;
         this.insurance = insurance;
+        this.nurse = nurse;
         this.doctors = doctors;
         this.consultations = consultations;
     }
-
     
     
     @Override

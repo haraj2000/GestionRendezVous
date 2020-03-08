@@ -32,6 +32,7 @@ public class RendezVous implements Serializable {
     private Doctor doctor;
     private Nurse nurse;
     private Service service;
+    private Assistant assistant;
 
     public Long getId() {
         return id;
@@ -89,7 +90,15 @@ public class RendezVous implements Serializable {
         this.service = service;
     }
 
-    public RendezVous(Long id, Date date, Date hour, Patient patient, Doctor doctor, Nurse nurse, Service service) {
+    public Assistant getAssistant() {
+        return assistant;
+    }
+
+    public void setAssistant(Assistant assistant) {
+        this.assistant = assistant;
+    }
+
+    public RendezVous(Long id, Date date, Date hour, Patient patient, Doctor doctor, Nurse nurse, Service service, Assistant assistant) {
         this.id = id;
         this.date = date;
         this.hour = hour;
@@ -97,7 +106,10 @@ public class RendezVous implements Serializable {
         this.doctor = doctor;
         this.nurse = nurse;
         this.service = service;
+        this.assistant = assistant;
     }
+
+    
 
     public RendezVous() {
         super();
