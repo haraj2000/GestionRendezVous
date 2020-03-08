@@ -25,6 +25,7 @@ public class Assistant extends Personne implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private List<Date> workDays;
+    private List<RendezVous> rendezVous;
 
     public Long getId() {
         return id;
@@ -66,11 +67,6 @@ public class Assistant extends Personne implements Serializable {
             return false;
         }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "gestionrendezvous.bean.Assisatant[ id=" + id + " ]";
     }
     
 }
