@@ -6,6 +6,8 @@
 package gestionrendezvous.bean;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,6 +24,7 @@ public class Assistant extends Personne implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private List<Date> workDays;
 
     public Long getId() {
         return id;
@@ -30,6 +33,20 @@ public class Assistant extends Personne implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public List<Date> getWorkDays() {
+        return workDays;
+    }
+
+    public void setWorkDays(List<Date> workDays) {
+        this.workDays = workDays;
+    }
+
+    public Assistant(Long id, List<Date> workDays) {
+        this.id = id;
+        this.workDays = workDays;
+    }
+    
 
     @Override
     public int hashCode() {
