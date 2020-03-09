@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -26,6 +27,7 @@ public class Checkout implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Double price;
+    @OneToOne
     private RendezVous nextRDV;
     @ManyToOne
     private Patient patient; 

@@ -23,10 +23,10 @@ public class RendezVousService extends AbstractFacade<RendezVous>{
     }
     
     
-     public RendezVous createRendezVous(String reference, Date date, Date hour, String etat, Patient patient, Doctor doctor, Nurse nurse, Service service){
+     public RendezVous createRendezVous(String reference, Date date, Date hour, Patient patient, Doctor doctor, Service service){
          RendezVous rendezVousFounded = find(reference);
          if(rendezVousFounded == null){
-             rendezVousFounded = new RendezVous(reference, date, hour, etat, patient, doctor, nurse, service);
+             rendezVousFounded = new RendezVous(reference, date, hour, patient, doctor, service);
              create(rendezVousFounded);
          }
              return rendezVousFounded;
@@ -42,12 +42,12 @@ public class RendezVousService extends AbstractFacade<RendezVous>{
          }
      }
      
-     public RendezVous editrendezVous(String reference, Date date, Date hour, String etat, Patient patient, Doctor doctor, Nurse nurse, Service service)
+     public RendezVous editRendezVous(String reference, Date date, Date hour, Patient patient, Doctor doctor, Service service)
      {
          RendezVous rendezVousFounded = find(reference);
          if( rendezVousFounded == null)
          {
-             rendezVousFounded = new RendezVous(reference, date, hour, etat, patient, doctor, nurse, service);
+             rendezVousFounded = new RendezVous(reference, date, hour, patient, doctor, service);
              create(rendezVousFounded);
          }
          else edit(rendezVousFounded);

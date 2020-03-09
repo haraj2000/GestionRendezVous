@@ -100,7 +100,6 @@ public class Nurse extends Personne implements Serializable {
         this.service = service;
         this.doctor = doctor;
     }
-
     
     @Override
     public int hashCode() {

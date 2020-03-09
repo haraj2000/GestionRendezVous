@@ -6,7 +6,6 @@
 package bean;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,7 +24,6 @@ public class Assistant extends Personne implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private List<Date> workDays;
     @OneToMany(mappedBy = "assistant")
     private List<RendezVous> rendezVous;
     @OneToMany
@@ -37,14 +35,6 @@ public class Assistant extends Personne implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public List<Date> getWorkDays() {
-        return workDays;
-    }
-
-    public void setWorkDays(List<Date> workDays) {
-        this.workDays = workDays;
     }
 
     public List<RendezVous> getRendezVous() {

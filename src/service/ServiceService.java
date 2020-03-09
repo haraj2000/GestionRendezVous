@@ -27,7 +27,7 @@ public class ServiceService extends AbstractFacade<Service>{
              return serviceFounded;
      }
      
-     public int removeservice(String reference){
+     public int removeService(String reference){
          Service serviceFounded = find(reference);
          if( serviceFounded == null)
              return -1;
@@ -37,7 +37,7 @@ public class ServiceService extends AbstractFacade<Service>{
          }
      }
      
-     public Service editservice(String reference, String libelle)
+     public Service editService(String reference, String libelle)
      {
          Service serviceFounded = find(reference);
          if( serviceFounded == null)
