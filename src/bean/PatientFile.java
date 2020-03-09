@@ -25,6 +25,7 @@ public class PatientFile implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String reference;
     private Patient patient;
     private float weight;
     private float height;
@@ -44,6 +45,14 @@ public class PatientFile implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
     public Patient getPatient() {
@@ -110,13 +119,15 @@ public class PatientFile implements Serializable {
         this.insurance = insurance;
     }
 
-    public PatientFile(Patient patient, float weight, float height, String bloodGroup, int tension, Insurance insurance) {
+    public PatientFile(String reference, Patient patient, float weight, float height, String bloodGroup, int tension, Insurance insurance, Doctor doctor) {
+        this.reference = reference;
         this.patient = patient;
         this.weight = weight;
         this.height = height;
         this.bloodGroup = bloodGroup;
         this.tension = tension;
         this.insurance = insurance;
+        this.doctor = doctor;
     }
 
     @Override

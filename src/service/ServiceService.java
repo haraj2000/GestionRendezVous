@@ -5,10 +5,47 @@
  */
 package service;
 
+import bean.Service;
+
 /**
  *
  * @author Haraj
  */
-public class ServiceService {
+public class ServiceService extends AbstractFacade<Service>{
+
+    public ServiceService() {
+        super(Service.class);
+    }
     
+    
+ public Service createService(String reference, String libelle){
+         Service serviceFounded = find(reference);
+         if(serviceFounded == null){
+             serviceFounded = new Service(reference, libelle);
+             create(serviceFounded);
+         }
+             return serviceFounded;
+     }
+     
+     public int removeservice(String reference){
+         Service serviceFounded = find(reference);
+         if( serviceFounded == null)
+             return -1;
+         else {
+             remove(serviceFounded);
+             return 1;
+         }
+     }
+     
+     public Service editservice(String reference, String libelle)
+     {
+         Service serviceFounded = find(reference);
+         if( serviceFounded == null)
+         {
+             serviceFounded = new Service(reference, libelle);
+             create(serviceFounded);
+         }
+         else edit(serviceFounded);
+             return serviceFounded;
+     }   
 }

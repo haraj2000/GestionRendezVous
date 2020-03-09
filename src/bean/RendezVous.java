@@ -25,6 +25,7 @@ public class RendezVous implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String reference;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date date;
     @Temporal(javax.persistence.TemporalType.TIME)
@@ -95,14 +96,32 @@ public class RendezVous implements Serializable {
         this.service = service;
     }
 
-    public RendezVous(Date date, Date hour, Patient patient, Doctor doctor, Service service) {
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
+    public RendezVous(String reference, Date date, Date hour, String etat, Patient patient, Doctor doctor, Nurse nurse, Service service) {
+        this.reference = reference;
         this.date = date;
         this.hour = hour;
+        this.etat = etat;
         this.patient = patient;
         this.doctor = doctor;
+        this.nurse = nurse;
         this.service = service;
     }
-    
     
     @Override
     public int hashCode() {
