@@ -13,7 +13,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 
 /**
  *
@@ -27,13 +26,11 @@ public class Checkout implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Double price;
-    private String nextRDV;
+    private RendezVous nextRDV;
     @ManyToOne
-    private Patient patient; // ?????????
-    @OneToOne
+    private Patient patient; 
+    @ManyToOne
     private Doctor doctor;
-    @ManyToOne
-    private Checkout checkout;
     @OneToMany(mappedBy = "checkout")
     private List<Consultation> consultations;
     
@@ -44,6 +41,53 @@ public class Checkout implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public RendezVous getNextRDV() {
+        return nextRDV;
+    }
+
+    public void setNextRDV(RendezVous nextRDV) {
+        this.nextRDV = nextRDV;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+    public List<Consultation> getConsultations() {
+        return consultations;
+    }
+
+    public void setConsultations(List<Consultation> consultations) {
+        this.consultations = consultations;
+    }
+
+    public Checkout(Double price, RendezVous nextRDV, Patient patient, Doctor doctor) {
+        this.price = price;
+        this.nextRDV = nextRDV;
+        this.patient = patient;
+        this.doctor = doctor;
     }
 
     @Override
@@ -66,9 +110,5 @@ public class Checkout implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "gestionrendezvous.bean.Checkout[ id=" + id + " ]";
-    }
     
 }

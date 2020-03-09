@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -28,6 +29,8 @@ public class Prescription implements Serializable {
     private Doctor doctor;
     private Patient patient;
     private List<String> medication;
+    private List<String> analyses;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date date;
     @OneToOne
     private Consultation consultation;
@@ -73,15 +76,32 @@ public class Prescription implements Serializable {
         this.id = id;
     }
 
-    public Prescription(Long id, Doctor doctor, Patient patient, List<String> medication, Date date) {
-        this.id = id;
+    public List<String> getAnalyses() {
+        return analyses;
+    }
+
+    public void setAnalyses(List<String> analyses) {
+        this.analyses = analyses;
+    }
+
+    public Consultation getConsultation() {
+        return consultation;
+    }
+
+    public void setConsultation(Consultation consultation) {
+        this.consultation = consultation;
+    }
+
+    public Prescription(Doctor doctor, Patient patient, List<String> medication, List<String> analyses, Date date, Consultation consultation) {
         this.doctor = doctor;
         this.patient = patient;
         this.medication = medication;
+        this.analyses = analyses;
         this.date = date;
+        this.consultation = consultation;
     }
-    
 
+   
     @Override
     public int hashCode() {
         int hash = 0;
