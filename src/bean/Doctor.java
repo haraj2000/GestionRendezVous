@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -31,7 +32,7 @@ public class Doctor extends Personne implements Serializable {
     private Service service;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date workDays;
-    
+    @OneToOne
     private Nurse nurse;
     @OneToMany(mappedBy = "doctor")
     private List<PatientFile> patientFiles;

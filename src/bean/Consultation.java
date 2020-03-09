@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -35,7 +36,7 @@ public class Consultation implements Serializable {
     private Doctor doctor;
     @ManyToOne
     private PatientFile patientFile;
-    //
+    @OneToOne
     private Prescription prescription;
     @ManyToOne
     private Checkout checkout;

@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -28,6 +29,7 @@ public class Nurse extends Personne implements Serializable {
     private Long id;
     @ManyToOne
     private Service service;
+    @OneToOne
     private Doctor doctor;
     @OneToMany(mappedBy = "nurse")
     private List<PatientFile> patientsFile;

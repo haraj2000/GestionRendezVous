@@ -12,6 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -28,6 +29,8 @@ public class Prescription implements Serializable {
     private Patient patient;
     private List<String> medication;
     private Date date;
+    @OneToOne
+    private Consultation consultation;
 
     public Doctor getDoctor() {
         return doctor;
