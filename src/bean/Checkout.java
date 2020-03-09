@@ -26,6 +26,7 @@ public class Checkout implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+     private String reference;
     private Double price;
     @OneToOne
     private RendezVous nextRDV;
@@ -35,6 +36,14 @@ public class Checkout implements Serializable {
     private Doctor doctor;
     @OneToMany(mappedBy = "checkout")
     private List<Consultation> consultations;
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
     
 
     public Long getId() {
@@ -85,11 +94,12 @@ public class Checkout implements Serializable {
         this.consultations = consultations;
     }
 
-    public Checkout(Double price, RendezVous nextRDV, Patient patient, Doctor doctor) {
+    public Checkout(String reference,Double price, RendezVous nextRDV, Patient patient, Doctor doctor) {
         this.price = price;
         this.nextRDV = nextRDV;
         this.patient = patient;
         this.doctor = doctor;
+        this.reference = reference;
     }
 
     @Override
