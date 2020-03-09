@@ -26,6 +26,7 @@ public class Prescription implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String reference;
     private Doctor doctor;
     private Patient patient;
     private List<String> medication;
@@ -35,6 +36,15 @@ public class Prescription implements Serializable {
     @OneToOne
     private Consultation consultation;
 
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    
     public Doctor getDoctor() {
         return doctor;
     }
@@ -92,13 +102,14 @@ public class Prescription implements Serializable {
         this.consultation = consultation;
     }
 
-    public Prescription(Doctor doctor, Patient patient, List<String> medication, List<String> analyses, Date date, Consultation consultation) {
+    public Prescription(String reference,Doctor doctor, Patient patient, List<String> medication, List<String> analyses, Date date, Consultation consultation) {
         this.doctor = doctor;
         this.patient = patient;
         this.medication = medication;
         this.analyses = analyses;
         this.date = date;
         this.consultation = consultation;
+        this.reference = reference;
     }
 
    
