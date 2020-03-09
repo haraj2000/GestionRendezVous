@@ -35,6 +35,7 @@ public class Consultation implements Serializable {
     private Doctor doctor;
     @ManyToOne
     private PatientFile patientFile;
+    //
     private Prescription prescription;
     @ManyToOne
     private Checkout checkout;

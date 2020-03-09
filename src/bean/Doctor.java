@@ -31,6 +31,7 @@ public class Doctor extends Personne implements Serializable {
     private Service service;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date workDays;
+    
     private Nurse nurse;
     @OneToMany(mappedBy = "doctor")
     private List<PatientFile> patientFiles;

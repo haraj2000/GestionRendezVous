@@ -6,6 +6,8 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +24,44 @@ public class Prescription implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private Doctor doctor;
+    private Patient patient;
+    private List<String> medication;
+    private Date date;
 
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public List<String> getMedication() {
+        return medication;
+    }
+
+    public void setMedication(List<String> medication) {
+        this.medication = medication;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    
     public Long getId() {
         return id;
     }
@@ -30,6 +69,15 @@ public class Prescription implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Prescription(Long id, Doctor doctor, Patient patient, List<String> medication, Date date) {
+        this.id = id;
+        this.doctor = doctor;
+        this.patient = patient;
+        this.medication = medication;
+        this.date = date;
+    }
+    
 
     @Override
     public int hashCode() {
@@ -51,9 +99,5 @@ public class Prescription implements Serializable {
         return true;
     }
 
-    @Override
-    public String toString() {
-        return "gestionrendezvous.bean.Prescription[ id=" + id + " ]";
-    }
     
 }

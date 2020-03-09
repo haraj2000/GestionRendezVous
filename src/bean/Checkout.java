@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -22,6 +24,13 @@ public class Checkout implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private Double price;
+    private String nextRDV;
+    @ManyToOne
+    private Patient patient; // ?????????
+    @OneToOne
+    private Doctor doctor;
+    
 
     public Long getId() {
         return id;
