@@ -35,8 +35,6 @@ public class Nurse extends Personne implements Serializable {
     private List<PatientFile> patientsFile;
     @OneToMany(mappedBy = "nurse")
     private List<Consultation> consultations;
-    @OneToMany(mappedBy = "nurse")
-    private List<RendezVous> rendezVous;
     private List<Date> workDays;
 
     public Long getId() {
@@ -85,14 +83,6 @@ public class Nurse extends Personne implements Serializable {
 
     public void setDoctor(Doctor doctor) {
         this.doctor = doctor;
-    }
-
-    public List<RendezVous> getRendezVous() {
-        return rendezVous;
-    }
-
-    public void setRendezVous(List<RendezVous> rendezVous) {
-        this.rendezVous = rendezVous;
     }
 
     public Nurse(Service service, Doctor doctor, String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String country, String city, String address, String password) {

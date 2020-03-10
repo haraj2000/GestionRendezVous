@@ -24,8 +24,6 @@ public class Assistant extends Personne implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToMany(mappedBy = "assistant")
-    private List<RendezVous> rendezVous;
     @OneToMany
     private List<Checkout> checkout;
 
@@ -35,14 +33,6 @@ public class Assistant extends Personne implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public List<RendezVous> getRendezVous() {
-        return rendezVous;
-    }
-
-    public void setRendezVous(List<RendezVous> rendezVous) {
-        this.rendezVous = rendezVous;
     }
 
     public List<Checkout> getCheckout() {

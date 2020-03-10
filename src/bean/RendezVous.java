@@ -40,6 +40,7 @@ public class RendezVous implements Serializable {
     @ManyToOne
     private Service service;
 
+
     public Long getId() {
         return id;
     }
@@ -104,11 +105,18 @@ public class RendezVous implements Serializable {
         this.reference = reference;
     }
 
-    public RendezVous(String reference, Date date, Date hour, String etat, Patient patient, Doctor doctor, Service service) {
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
+    public RendezVous(String reference, Date date, Date hour, Patient patient, Doctor doctor, Service service) {
         this.reference = reference;
         this.date = date;
         this.hour = hour;
-        this.etat = etat;
         this.patient = patient;
         this.doctor = doctor;
         this.service = service;
