@@ -30,12 +30,8 @@ public class PatientFileService extends AbstractFacade<PatientFile>{
     public PatientFile editPatientFile(String reference, Patient patient, float weight, float height, String bloodGroup, int tension, Insurance insurance, Doctor doctor)
      {
          PatientFile patientFileFounded = find(reference);
-         if( patientFileFounded == null)
-         {
-             patientFileFounded = new PatientFile(reference, patient, weight, height, bloodGroup, tension, insurance, doctor);
-             create(patientFileFounded);
-         }
-         else edit(patientFileFounded);
+         if( patientFileFounded != null)
+      edit(patientFileFounded);
              return patientFileFounded;
      }
     

@@ -5,11 +5,9 @@
  */
 package service;
 
-import bean.Checkout;
 import bean.Consultation;
 import bean.Doctor;
 import bean.PatientFile;
-import bean.Prescription;
 import java.util.Date;
 
 /**
@@ -22,27 +20,12 @@ public class ConsultationService extends AbstractFacade<Consultation> {
         super(Consultation.class);
     }
       
-       public Consultation createConsultation(String reference,Date date, Date timeStart, Doctor doctor, PatientFile patientFile){
+       public Consultation createConsultation(String reference, Doctor doctor, PatientFile patientFile){
          Consultation consultationFounded = find(reference);
          if(consultationFounded== null){
-         consultationFounded= new Consultation(reference, date, timeStart, doctor, patientFile);
+         consultationFounded= new Consultation(reference, doctor, patientFile);
              create(consultationFounded);
          }
-             return consultationFounded;
-     }
-       
-         
- 
-     
-     public Consultation editConsultation(String reference,Date date, Date timeStart, Doctor doctor, PatientFile patientFile)
-     {
-         Consultation consultationFounded= find(reference);
-         if( consultationFounded== null)
-         {
-             consultationFounded= new Consultation(reference, date, timeStart, doctor, patientFile);
-             create(consultationFounded);
-         }
-         else edit(consultationFounded);
              return consultationFounded;
      }
     

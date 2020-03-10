@@ -28,12 +28,8 @@ public class PatientService extends AbstractFacade<Patient> {
      public Patient editPatient(int age,Date dayBirth,String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String country, String city, String address, String password)
      {
          Patient patientFounded= find(CNI);
-         if( patientFounded== null)
-         {
-             patientFounded= new Patient(age,dayBirth,CNI, lastName, FirstName, sexe, mail, phoneNumber, country, city, address, password);
-             create(patientFounded);
-         }
-         else edit(patientFounded);
+         if( patientFounded!= null)
+         edit(patientFounded);
              return patientFounded;
      }
     

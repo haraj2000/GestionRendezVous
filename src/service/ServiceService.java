@@ -40,12 +40,8 @@ public class ServiceService extends AbstractFacade<Service>{
      public Service editService(String reference, String libelle)
      {
          Service serviceFounded = find(reference);
-         if( serviceFounded == null)
-         {
-             serviceFounded = new Service(reference, libelle);
-             create(serviceFounded);
-         }
-         else edit(serviceFounded);
+         if( serviceFounded != null)
+          edit(serviceFounded);
              return serviceFounded;
      }   
 }

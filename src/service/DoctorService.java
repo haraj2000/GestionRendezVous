@@ -40,12 +40,8 @@ public class DoctorService extends AbstractFacade<Doctor> {
      public Doctor editDoctor(Service service,Nurse nurse,String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String country, String city, String address, String password)
      {
          Doctor doctorFounded= find(CNI);
-         if( doctorFounded== null)
-         {
-             doctorFounded= new Doctor( service,nurse,CNI, lastName, FirstName, sexe, mail, phoneNumber, country, city, address, password);
-             create(doctorFounded);
-         }
-         else edit(doctorFounded);
+         if( doctorFounded!= null)
+         edit(doctorFounded);
              return doctorFounded;
      }
     

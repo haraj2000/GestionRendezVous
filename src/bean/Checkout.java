@@ -26,7 +26,7 @@ public class Checkout implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-     private String reference;
+    private String reference;
     private Double price;
     @OneToOne
     private RendezVous nextRDV;

@@ -38,12 +38,8 @@ public class AssistantService extends AbstractFacade<Assistant>{
      public Assistant editAssistant(String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String country, String city, String address, String password)
      {
          Assistant assistantFounded= find(CNI);
-         if( assistantFounded== null)
-         {
-             assistantFounded= new Assistant(CNI, lastName, FirstName, sexe, mail, phoneNumber, country, city, address, password);
-             create(assistantFounded);
-         }
-         else edit(assistantFounded);
-             return assistantFounded;
+         if( assistantFounded!= null)
+         edit(assistantFounded);
+            return assistantFounded;
      }
 }

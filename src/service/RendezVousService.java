@@ -44,12 +44,8 @@ public class RendezVousService extends AbstractFacade<RendezVous>{
      public RendezVous editRendezVous(String reference, Date date, Date hour, String etat, Patient patient, Doctor doctor, Service service)
      {
          RendezVous rendezVousFounded = find(reference);
-         if( rendezVousFounded == null)
-         {
-             rendezVousFounded = new RendezVous(reference, date, hour, etat, patient, doctor, service);
-             create(rendezVousFounded);
-         }
-         else edit(rendezVousFounded);
+         if( rendezVousFounded != null)
+         edit(rendezVousFounded);
              return rendezVousFounded;
      } 
 }

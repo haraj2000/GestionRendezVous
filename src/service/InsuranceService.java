@@ -37,12 +37,8 @@ public class InsuranceService extends AbstractFacade<Insurance> {
      public Insurance editInsurance(String libelle,double monthlyCost)
      {
          Insurance insuranceFounded= find(libelle);
-         if( insuranceFounded== null)
-         {
-            insuranceFounded= new Insurance( libelle,monthlyCost);
-             create(insuranceFounded);
-         }
-         else edit(insuranceFounded);
+         if( insuranceFounded!= null)
+        edit(insuranceFounded);
              return insuranceFounded;
      }
 

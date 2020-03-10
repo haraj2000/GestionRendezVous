@@ -134,11 +134,8 @@ public class Consultation implements Serializable {
         }
         return true;
     }
-
-    public Consultation(String reference, Date date, Date timeStart, Doctor doctor, PatientFile patientFile) {
+    public Consultation(String reference, Doctor doctor, PatientFile patientFile) {
         this.reference = reference;
-        this.date = date;
-        this.timeStart = timeStart;
         this.doctor = doctor;
         this.patientFile = patientFile;
     }
