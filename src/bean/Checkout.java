@@ -6,13 +6,11 @@
 package bean;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
@@ -34,8 +32,9 @@ public class Checkout implements Serializable {
     private Patient patient; 
     @ManyToOne
     private Doctor doctor;
-    @OneToMany(mappedBy = "checkout")
-    private List<Consultation> consultations;
+    @OneToOne
+    private Consultation consultation;
+
 
     public String getReference() {
         return reference;
@@ -86,21 +85,23 @@ public class Checkout implements Serializable {
         this.doctor = doctor;
     }
 
-    public List<Consultation> getConsultations() {
-        return consultations;
+    public Consultation getConsultation() {
+        return consultation;
     }
 
-    public void setConsultations(List<Consultation> consultations) {
-        this.consultations = consultations;
+    public void setConsultation(Consultation consultation) {
+        this.consultation = consultation;
     }
 
-    public Checkout(String reference,Double price, RendezVous nextRDV, Patient patient, Doctor doctor) {
+    public Checkout(String reference, Double price, RendezVous nextRDV, Patient patient, Doctor doctor, Consultation consultation) {
+        this.reference = reference;
         this.price = price;
         this.nextRDV = nextRDV;
         this.patient = patient;
         this.doctor = doctor;
-        this.reference = reference;
+        this.consultation = consultation;
     }
+
 
     @Override
     public int hashCode() {

@@ -6,9 +6,11 @@
 package service;
 
 import bean.Checkout;
+import bean.Consultation;
 import bean.Doctor;
 import bean.Patient;
 import bean.RendezVous;
+import java.util.Date;
 /**
  *
  * @author blackswan
@@ -18,11 +20,13 @@ public class CheckoutService extends AbstractFacade<Checkout> {
     public CheckoutService() {
         super(Checkout.class);
     }
-  public Checkout createCheckout(String reference,Double price,RendezVous nextRDV,Patient patient,Doctor doctor){
+  public Checkout createCheckout(String reference, Double price, RendezVous nextRDV, Patient patient, Doctor doctor, Consultation consultation){
          Checkout checkoutFounded= find(reference);
          if(checkoutFounded== null){
-            checkoutFounded= new Checkout( reference,price, nextRDV, patient, doctor);
+            checkoutFounded= new Checkout(reference, price, nextRDV, patient, doctor, consultation);
             create(checkoutFounded);
+            consultation.setCheckout(checkoutFounded);
+            consultation.setTimeEnd(new Date(0));
          }
              return checkoutFounded;
      }

@@ -39,7 +39,7 @@ public class Consultation implements Serializable {
     private PatientFile patientFile;
     @OneToOne
     private Prescription prescription;
-    @ManyToOne
+    @OneToOne
     private Checkout checkout;
 
     public String getReference() {
@@ -138,6 +138,8 @@ public class Consultation implements Serializable {
         this.reference = reference;
         this.doctor = doctor;
         this.patientFile = patientFile;
+        setDate(new Date(0));
+        setTimeStart(new Date(0));
     }
    
 }

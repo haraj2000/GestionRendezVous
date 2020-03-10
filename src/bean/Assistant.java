@@ -24,8 +24,7 @@ public class Assistant extends Personne implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToMany
-    private List<Checkout> checkout;
+
 
     public Long getId() {
         return id;
@@ -33,14 +32,6 @@ public class Assistant extends Personne implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public List<Checkout> getCheckout() {
-        return checkout;
-    }
-
-    public void setCheckout(List<Checkout> checkout) {
-        this.checkout = checkout;
     }
 
     public Assistant(String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String country, String city, String address, String password) {
