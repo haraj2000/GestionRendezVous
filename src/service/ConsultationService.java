@@ -22,10 +22,10 @@ public class ConsultationService extends AbstractFacade<Consultation> {
         super(Consultation.class);
     }
       
-       public Consultation createConsultation(String reference,Date date, Date timeStart, Date timeEnd, Doctor doctor, PatientFile patientFile, Prescription prescription, Checkout checkout){
+       public Consultation createConsultation(String reference,Date date, Date timeStart, Doctor doctor, PatientFile patientFile){
          Consultation consultationFounded = find(reference);
          if(consultationFounded== null){
-         consultationFounded= new Consultation(reference,date,timeStart, timeEnd,doctor, patientFile, prescription, checkout);
+         consultationFounded= new Consultation(reference, date, timeStart, doctor, patientFile);
              create(consultationFounded);
          }
              return consultationFounded;
@@ -34,12 +34,12 @@ public class ConsultationService extends AbstractFacade<Consultation> {
          
  
      
-     public Consultation editConsultation(String reference,Date date, Date timeStart, Date timeEnd, Doctor doctor, PatientFile patientFile, Prescription prescription, Checkout checkout)
+     public Consultation editConsultation(String reference,Date date, Date timeStart, Doctor doctor, PatientFile patientFile)
      {
          Consultation consultationFounded= find(reference);
          if( consultationFounded== null)
          {
-             consultationFounded= new Consultation(reference,date,timeStart, timeEnd,doctor, patientFile, prescription, checkout);
+             consultationFounded= new Consultation(reference, date, timeStart, doctor, patientFile);
              create(consultationFounded);
          }
          else edit(consultationFounded);

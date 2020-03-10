@@ -115,11 +115,6 @@ public class Consultation implements Serializable {
         this.checkout = checkout;
     }
 
-    public Consultation(Doctor doctor, PatientFile patientFile) {
-        this.doctor = doctor;
-        this.patientFile = patientFile;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -140,18 +135,12 @@ public class Consultation implements Serializable {
         return true;
     }
 
-    public Consultation(String reference,Date date, Date timeStart, Date timeEnd, Doctor doctor, PatientFile patientFile, Prescription prescription, Checkout checkout) {
+    public Consultation(String reference, Date date, Date timeStart, Doctor doctor, PatientFile patientFile) {
+        this.reference = reference;
         this.date = date;
         this.timeStart = timeStart;
-        this.timeEnd = timeEnd;
         this.doctor = doctor;
         this.patientFile = patientFile;
-        this.prescription = prescription;
-        this.checkout = checkout;
-        this.reference = reference;
     }
-    
-    
-    
-    
+   
 }
