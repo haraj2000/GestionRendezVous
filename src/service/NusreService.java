@@ -33,11 +33,13 @@ public class NusreService extends AbstractFacade<Nurse>{
     public int removeNurse(String CNI){
          Nurse nurseFounded = find(CNI);
          Service service = nurseFounded.getService();
+         Doctor doctor = nurseFounded.getDoctor();
          if( nurseFounded == null)
              return -1;
          else {
              remove(nurseFounded);
              service.getNurses().remove(nurseFounded);
+             doctor.setNurse(null);
              return 1;
          }
      }
@@ -47,11 +49,19 @@ public class NusreService extends AbstractFacade<Nurse>{
          Nurse nurseFounded = find(CNI);
          if( nurseFounded != null){
              Service exService = nurseFounded.getService();
+             Doctor exDoctor = nurseFounded.getDoctor();
+             if (exDoctor != doctor)
+             {if(doctor.getNurse()!=null)
+                 return nurseFounded;
+             else{
+                 exDoctor.setNurse(null);
+                 doctor.setNurse(nurseFounded);
              if (exService != service)
              {
                  exService.getNurses().remove(nurseFounded);
                  service.getNurses().add(nurseFounded);
              }
+             
             nurseFounded.setService(service);
             nurseFounded.setDoctor(doctor);
             nurseFounded.setMail(mail);
@@ -61,8 +71,11 @@ public class NusreService extends AbstractFacade<Nurse>{
             nurseFounded.setAddress(address);
             nurseFounded.setPassword(password);
             edit(nurseFounded);
-           
+            return nurseFounded;
+             } 
          }
-         return nurseFounded;
+         
+     }
+        return nurseFounded;
      }
 }

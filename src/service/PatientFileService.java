@@ -24,14 +24,31 @@ public class PatientFileService extends AbstractFacade<PatientFile>{
          if(patientFileFounded == null){
              patientFileFounded = new PatientFile(reference, patient, weight, height, bloodGroup, tension, insurance, doctor);
              create(patientFileFounded);
+             doctor.getPatientFiles().add(patientFileFounded);
+             insurance.getPatientFiles().add(patientFileFounded);
          }
              return patientFileFounded;
      }
-    public PatientFile editPatientFile(String reference, Patient patient, float weight, float height, String bloodGroup, int tension, Insurance insurance, Doctor doctor)
+    public PatientFile editPatientFile(String reference, float weight, float height, int tension, Insurance insurance)
      {
          PatientFile patientFileFounded = find(reference);
-         if( patientFileFounded != null)
+         Doctor doctor = patientFileFounded.getDoctor();
+         Patient patient = patientFileFounded.getPatient();
+         Insurance exInsurance = patientFileFounded.getInsurance();
+         if( patientFileFounded != null){
+            doctor.getPatientFiles().remove(patientFileFounded);
+            exInsurance.getPatientFiles().remove(patientFileFounded);
+            patient.getPatientFiles().remove(patientFileFounded);
+         patientFileFounded.setWeight(weight);
+         patientFileFounded.setHeight(height);
+         patientFileFounded.setTension(tension);
+         patientFileFounded.setInsurance(insurance);
+         
       edit(patientFileFounded);
+         doctor.getPatientFiles().add(patientFileFounded);
+         insurance.getPatientFiles().add(patientFileFounded);
+         patient.getPatientFiles().add(patientFileFounded);
+         }
              return patientFileFounded;
      }
     
