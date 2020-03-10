@@ -26,6 +26,7 @@ public class Consultation implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String reference;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date date;
     @Temporal(javax.persistence.TemporalType.TIME)
@@ -41,6 +42,15 @@ public class Consultation implements Serializable {
     @ManyToOne
     private Checkout checkout;
 
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    
     public Long getId() {
         return id;
     }
@@ -129,6 +139,19 @@ public class Consultation implements Serializable {
         }
         return true;
     }
+
+    public Consultation(String reference,Date date, Date timeStart, Date timeEnd, Doctor doctor, PatientFile patientFile, Prescription prescription, Checkout checkout) {
+        this.date = date;
+        this.timeStart = timeStart;
+        this.timeEnd = timeEnd;
+        this.doctor = doctor;
+        this.patientFile = patientFile;
+        this.prescription = prescription;
+        this.checkout = checkout;
+        this.reference = reference;
+    }
+    
+    
     
     
 }
