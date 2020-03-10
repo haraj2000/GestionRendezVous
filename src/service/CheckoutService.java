@@ -26,20 +26,5 @@ public class CheckoutService extends AbstractFacade<Checkout> {
          }
              return checkoutFounded;
      }
-  
-     
-     public Checkout editCheckout(String reference,Double price,RendezVous nextRDV,Patient patient,Doctor doctor)
-     {
-         Checkout checkoutFounded= find(reference);
-         if( checkoutFounded== null)
-         {
-            checkoutFounded= new Checkout( reference,price, nextRDV, patient, doctor);
-             create(checkoutFounded);
-         }
-         else edit(checkoutFounded);
-             return checkoutFounded;
-     }
 
-
-    
 }
