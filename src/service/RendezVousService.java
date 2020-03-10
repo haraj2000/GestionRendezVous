@@ -6,7 +6,6 @@
 package service;
 
 import bean.Doctor;
-import bean.Nurse;
 import bean.Patient;
 import bean.RendezVous;
 import bean.Service;
@@ -23,10 +22,10 @@ public class RendezVousService extends AbstractFacade<RendezVous>{
     }
     
     
-     public RendezVous createRendezVous(String reference, Date date, Date hour, Patient patient, Doctor doctor, Service service){
+     public RendezVous createRendezVous(String reference, Date date, Date hour, String etat, Patient patient, Doctor doctor, Service service){
          RendezVous rendezVousFounded = find(reference);
          if(rendezVousFounded == null){
-             rendezVousFounded = new RendezVous(reference, date, hour, patient, doctor, service);
+             rendezVousFounded = new RendezVous(reference, date, hour, etat, patient, doctor, service);
              create(rendezVousFounded);
          }
              return rendezVousFounded;
@@ -42,12 +41,12 @@ public class RendezVousService extends AbstractFacade<RendezVous>{
          }
      }
      
-     public RendezVous editRendezVous(String reference, Date date, Date hour, Patient patient, Doctor doctor, Service service)
+     public RendezVous editRendezVous(String reference, Date date, Date hour, String etat, Patient patient, Doctor doctor, Service service)
      {
          RendezVous rendezVousFounded = find(reference);
          if( rendezVousFounded == null)
          {
-             rendezVousFounded = new RendezVous(reference, date, hour, patient, doctor, service);
+             rendezVousFounded = new RendezVous(reference, date, hour, etat, patient, doctor, service);
              create(rendezVousFounded);
          }
          else edit(rendezVousFounded);

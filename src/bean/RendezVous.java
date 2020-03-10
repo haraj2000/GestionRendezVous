@@ -30,6 +30,7 @@ public class RendezVous implements Serializable {
     private Date date;
     @Temporal(javax.persistence.TemporalType.TIME)
     private Date hour;
+    private String etat;
     @ManyToOne
     private Patient patient;
     @ManyToOne
@@ -103,14 +104,16 @@ public class RendezVous implements Serializable {
         this.reference = reference;
     }
 
-    public RendezVous(String reference, Date date, Date hour, Patient patient, Doctor doctor, Service service) {
+    public RendezVous(String reference, Date date, Date hour, String etat, Patient patient, Doctor doctor, Service service) {
         this.reference = reference;
         this.date = date;
         this.hour = hour;
+        this.etat = etat;
         this.patient = patient;
         this.doctor = doctor;
         this.service = service;
     }
+
 
     @Override
     public int hashCode() {

@@ -101,7 +101,6 @@ public class Doctor extends Personne implements Serializable {
     public Doctor(Service service, Nurse nurse, String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String country, String city, String address, String password) {
         super(CNI, lastName, FirstName, sexe, mail, phoneNumber, country, city, address, password);
         this.service = service;
-        this.nurse = nurse;
     }
 
     @Override

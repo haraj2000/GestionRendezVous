@@ -105,6 +105,11 @@ public class Consultation implements Serializable {
         this.checkout = checkout;
     }
 
+    public Consultation(Doctor doctor, PatientFile patientFile) {
+        this.doctor = doctor;
+        this.patientFile = patientFile;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
