@@ -36,6 +36,10 @@ public class Consultation implements Serializable {
     @ManyToOne
     private Doctor doctor;
     @ManyToOne
+    private Nurse nurse;
+    @ManyToOne
+    private Patient patient;
+    @ManyToOne
     private PatientFile patientFile;
     @OneToOne
     private Prescription prescription;
@@ -134,9 +138,11 @@ public class Consultation implements Serializable {
         }
         return true;
     }
-    public Consultation(String reference, Doctor doctor, PatientFile patientFile) {
+    public Consultation(String reference, Doctor doctor,Nurse nurse,Patient patient, PatientFile patientFile) {
         this.reference = reference;
         this.doctor = doctor;
+        this.nurse = nurse;
+        this.patient = patient;
         this.patientFile = patientFile;
     }
    
