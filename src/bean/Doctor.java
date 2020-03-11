@@ -30,16 +30,17 @@ public class Doctor extends Personne implements Serializable {
     private Long id;
     @ManyToOne
     private Service service;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date workDays;
     @OneToOne
     private Nurse nurse;
+     @Temporal(javax.persistence.TemporalType.DATE)
+    private Date workDays;
     @OneToMany(mappedBy = "doctor")
     private List<PatientFile> patientFiles;
     @OneToMany(mappedBy = "doctor")
     private List<RendezVous> rendezVous;
     @OneToMany(mappedBy = "doctor")
     private List<Consultation> consultations;
+    
      
 
     public Long getId() {
@@ -98,10 +99,15 @@ public class Doctor extends Personne implements Serializable {
         this.consultations = consultations;
     }
 
-    public Doctor(Service service, Nurse nurse, String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String country, String city, String address, String password) {
+    public Doctor(Service service, Nurse nurse, Date workDays, String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String country, String city, String address, String password) {
         super(CNI, lastName, FirstName, sexe, mail, phoneNumber, country, city, address, password);
         this.service = service;
+        this.nurse = nurse;
+        this.workDays = workDays;
     }
+
+   
+    
 
     @Override
     public int hashCode() {
