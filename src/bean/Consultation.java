@@ -45,6 +45,8 @@ public class Consultation implements Serializable {
     private Prescription prescription;
     @OneToOne
     private Checkout checkout;
+    @OneToOne
+    private RendezVous rendezVous;
 
     public String getReference() {
         return reference;
@@ -119,6 +121,30 @@ public class Consultation implements Serializable {
         this.checkout = checkout;
     }
 
+    public Nurse getNurse() {
+        return nurse;
+    }
+
+    public void setNurse(Nurse nurse) {
+        this.nurse = nurse;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
+
+    public RendezVous getRendezVous() {
+        return rendezVous;
+    }
+
+    public void setRendezVous(RendezVous rendezVous) {
+        this.rendezVous = rendezVous;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -138,14 +164,15 @@ public class Consultation implements Serializable {
         }
         return true;
     }
-    public Consultation(String reference, Doctor doctor,Nurse nurse,Patient patient, PatientFile patientFile) {
+
+    public Consultation(String reference, Doctor doctor, Nurse nurse, Patient patient, PatientFile patientFile, RendezVous rendezVous) {
         this.reference = reference;
         this.doctor = doctor;
         this.nurse = nurse;
         this.patient = patient;
         this.patientFile = patientFile;
-        setDate(new Date(0));
-        setTimeStart(new Date(0));
+        this.rendezVous = rendezVous;
     }
+    
    
 }

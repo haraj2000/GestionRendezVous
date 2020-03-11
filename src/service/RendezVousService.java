@@ -26,7 +26,6 @@ public class RendezVousService extends AbstractFacade<RendezVous>{
          RendezVous rendezVousFounded = find(reference);
          if(rendezVousFounded == null){
              rendezVousFounded = new RendezVous(reference, date, hour, patient, doctor, service);
-             rendezVousFounded.setEtat("waiting");
              create(rendezVousFounded);
              doctor.getRendezVous().add(rendezVousFounded);
              patient.getRendezVouses().add(rendezVousFounded);

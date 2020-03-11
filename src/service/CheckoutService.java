@@ -24,6 +24,8 @@ public class CheckoutService extends AbstractFacade<Checkout> {
          Checkout checkoutFounded= find(reference);
          if(checkoutFounded== null){
             checkoutFounded= new Checkout(reference, price, nextRDV, patient, doctor, consultation);
+            RendezVousService rendezVousService = null;
+            rendezVousService.create(nextRDV);
             create(checkoutFounded);
             consultation.setCheckout(checkoutFounded);
             consultation.setTimeEnd(new Date(0));

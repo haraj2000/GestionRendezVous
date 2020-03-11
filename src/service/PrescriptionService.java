@@ -25,6 +25,7 @@ public class PrescriptionService extends AbstractFacade<Prescription> {
          Prescription prescriptionFounded= find(reference);
          if(prescriptionFounded== null){
             prescriptionFounded= new Prescription(reference,doctor, patient, medication, analyses, date, consultation);
+            consultation.setPrescription(prescriptionFounded);
             create(prescriptionFounded);
          }
              return prescriptionFounded;

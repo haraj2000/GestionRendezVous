@@ -23,11 +23,13 @@ public class NusreService extends AbstractFacade<Nurse>{
     public Nurse createNurse(Service service, Doctor doctor, String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String country, String city, String address, String password){
         Nurse nurseFounded = find(CNI);
         if(nurseFounded == null){
+            if (doctor.getNurse() ==null){
             nurseFounded = new Nurse(service, doctor, CNI, lastName, FirstName, sexe, mail, phoneNumber, country, city, address, password);
             create(nurseFounded);
             service.getNurses().add(nurseFounded);
             doctor.setNurse(nurseFounded);
                     }
+        }
         return nurseFounded;
     }
     public int removeNurse(String CNI){

@@ -30,7 +30,6 @@ public class RendezVous implements Serializable {
     private Date date;
     @Temporal(javax.persistence.TemporalType.TIME)
     private Date hour;
-    private String etat;
     @ManyToOne
     private Patient patient;
     @ManyToOne
@@ -103,14 +102,6 @@ public class RendezVous implements Serializable {
 
     public void setReference(String reference) {
         this.reference = reference;
-    }
-
-    public String getEtat() {
-        return etat;
-    }
-
-    public void setEtat(String etat) {
-        this.etat = etat;
     }
 
     public RendezVous(String reference, Date date, Date hour, Patient patient, Doctor doctor, Service service) {
