@@ -19,17 +19,17 @@ public class PatientFileService extends AbstractFacade<PatientFile>{
     public PatientFileService() {
         super(PatientFile.class);
     }
-    public PatientFile createPatientFile(String reference, Patient patient, float weight, float height, String bloodGroup, int tension, Insurance insurance, Doctor doctor){
+    public PatientFile createPatientFile(String reference, Patient patient, float weight, float height, String bloodGroup, int tension, String notes, Insurance insurance, Doctor doctor){
          PatientFile patientFileFounded = find(reference);
          if(patientFileFounded == null){
-             patientFileFounded = new PatientFile(reference, patient, weight, height, bloodGroup, tension, insurance, doctor);
+             patientFileFounded = new PatientFile(reference, patient, weight, height, bloodGroup, tension, notes, insurance, doctor);
              create(patientFileFounded);
              doctor.getPatientFiles().add(patientFileFounded);
              insurance.getPatientFiles().add(patientFileFounded);
          }
              return patientFileFounded;
      }
-    public PatientFile editPatientFile(String reference, float weight, float height, int tension, Insurance insurance)
+    public PatientFile editPatientFile(String reference, float weight, float height, int tension, Insurance insurance, String notes)
      {
          PatientFile patientFileFounded = find(reference);
          Doctor doctor = patientFileFounded.getDoctor();
@@ -43,6 +43,7 @@ public class PatientFileService extends AbstractFacade<PatientFile>{
          patientFileFounded.setHeight(height);
          patientFileFounded.setTension(tension);
          patientFileFounded.setInsurance(insurance);
+         patientFileFounded.setNotes(notes);
          
       edit(patientFileFounded);
          doctor.getPatientFiles().add(patientFileFounded);

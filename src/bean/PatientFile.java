@@ -31,6 +31,7 @@ public class PatientFile implements Serializable {
     private float height;
     private String bloodGroup;
     private int tension;
+    private String notes;
     @ManyToOne
     private Insurance insurance;
     @ManyToOne
@@ -38,6 +39,10 @@ public class PatientFile implements Serializable {
     @OneToMany(mappedBy = "patientFile")
     private List<Consultation> consultations;
     private int consultationsNumber = consultations.size();
+
+    public PatientFile() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     public Long getId() {
         return id;
@@ -119,13 +124,22 @@ public class PatientFile implements Serializable {
         this.insurance = insurance;
     }
 
-    public PatientFile(String reference, Patient patient, float weight, float height, String bloodGroup, int tension, Insurance insurance, Doctor doctor) {
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
+
+    public PatientFile(String reference, Patient patient, float weight, float height, String bloodGroup, int tension, String notes, Insurance insurance, Doctor doctor) {
         this.reference = reference;
         this.patient = patient;
         this.weight = weight;
         this.height = height;
         this.bloodGroup = bloodGroup;
         this.tension = tension;
+        this.notes = notes;
         this.insurance = insurance;
         this.doctor = doctor;
     }
