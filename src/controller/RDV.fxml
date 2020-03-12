@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import com.jfoenix.controls.JFXTreeTableRow?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #288E88;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="415.0" layoutY="39.0" prefHeight="321.0" prefWidth="265.0" style="-fx-background-color: #A4ABAA;">
+         <children>
+            <ChoiceBox layoutX="102.0" layoutY="190.0" prefHeight="25.0" prefWidth="132.0" />
+            <JFXDatePicker defaultColor="#00110f" layoutX="111.0" layoutY="85.0" prefHeight="28.0" prefWidth="118.0" promptText=" date" style="-fx-background-color: FFFFFF;" />
+            <Label layoutX="21.0" layoutY="91.0" text="choose a day" textFill="WHITE" />
+            <Label layoutX="41.0" layoutY="143.0" text="Hour" textFill="WHITE" />
+            <Label layoutX="37.0" layoutY="194.0" text="Service" textFill="WHITE" />
+            <Label layoutX="54.0" layoutY="34.0" text="Add an appointment" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ChoiceBox layoutX="102.0" layoutY="234.0" prefHeight="25.0" prefWidth="132.0" />
+            <Label layoutX="38.0" layoutY="238.0" text="Doctor" textFill="WHITE" />
+            <JFXButton buttonType="RAISED" layoutX="102.0" layoutY="276.0" prefHeight="25.0" prefWidth="132.0" style="-fx-background-color: #288E88;" text="ADD" textFill="WHITE" />
+            <JFXTimePicker defaultColor="#141414" layoutX="111.0" layoutY="138.0" prefHeight="28.0" prefWidth="118.0" style="-fx-background-color: #FFFFFF;" />
+         </children>
+      </AnchorPane>
+      <Label layoutX="88.0" layoutY="60.0" text="your current appointments" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <JFXTreeTableRow layoutX="159.0" layoutY="187.0" />
+      <TableView layoutX="30.0" layoutY="108.0" prefHeight="254.0" prefWidth="347.0">
+        <columns>
+          <TableColumn prefWidth="96.0" text="Date" />
+          <TableColumn prefWidth="91.0" text="Hour" />
+          <TableColumn prefWidth="87.0" text="Doctor" />
+          <TableColumn prefWidth="72.0" text="Edit/Delete" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
