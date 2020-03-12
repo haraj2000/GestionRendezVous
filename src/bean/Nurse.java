@@ -85,8 +85,8 @@ public class Nurse extends Personne implements Serializable {
         this.doctor = doctor;
     }
 
-    public Nurse(Service service, Doctor doctor, String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String country, String city, String address, String password) {
-        super(CNI, lastName, FirstName, sexe, mail, phoneNumber, country, city, address, password);
+    public Nurse(Service service, Doctor doctor, String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String address, String password) {
+        super(CNI, lastName, FirstName, sexe, mail, phoneNumber, address, password);
         this.service = service;
         this.doctor = doctor;
     }

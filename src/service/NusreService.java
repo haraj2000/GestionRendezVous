@@ -20,11 +20,11 @@ public class NusreService extends AbstractFacade<Nurse>{
         super(Nurse.class);
     }
     
-    public Nurse createNurse(Service service, Doctor doctor, String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String country, String city, String address, String password){
+    public Nurse createNurse(Service service, Doctor doctor, String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String address, String password){
         Nurse nurseFounded = find(CNI);
         if(nurseFounded == null){
             if (doctor.getNurse() ==null){
-            nurseFounded = new Nurse(service, doctor, CNI, lastName, FirstName, sexe, mail, phoneNumber, country, city, address, password);
+            nurseFounded = new Nurse(service, doctor, CNI, lastName, FirstName, sexe, mail, phoneNumber, address, password);
             create(nurseFounded);
             service.getNurses().add(nurseFounded);
             doctor.setNurse(nurseFounded);
@@ -46,7 +46,7 @@ public class NusreService extends AbstractFacade<Nurse>{
          }
      }
      
-     public Nurse editNurse(Service service, Doctor doctor, String CNI, String mail, int phoneNumber, String country, String city, String address, String password)
+     public Nurse editNurse(Service service, Doctor doctor, String CNI, String mail, int phoneNumber, String address, String password)
      {
          Nurse nurseFounded = find(CNI);
          if( nurseFounded != null){
@@ -68,8 +68,6 @@ public class NusreService extends AbstractFacade<Nurse>{
             nurseFounded.setDoctor(doctor);
             nurseFounded.setMail(mail);
             nurseFounded.setPhoneNumber(phoneNumber);
-            nurseFounded.setCountry(country);
-            nurseFounded.setCity(city);
             nurseFounded.setAddress(address);
             nurseFounded.setPassword(password);
             edit(nurseFounded);

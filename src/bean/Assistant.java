@@ -6,12 +6,10 @@
 package bean;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 /**
  *
@@ -34,8 +32,8 @@ public class Assistant extends Personne implements Serializable {
         this.id = id;
     }
 
-    public Assistant(String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String country, String city, String address, String password) {
-        super(CNI, lastName, FirstName, sexe, mail, phoneNumber, country, city, address, password);
+    public Assistant(String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String address, String password) {
+        super(CNI, lastName, FirstName, sexe, mail, phoneNumber, address, password);
     }
     
 

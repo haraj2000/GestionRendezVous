@@ -19,10 +19,10 @@ public class DoctorService extends AbstractFacade<Doctor> {
     public DoctorService() {
         super(Doctor.class);
     }
-     public Doctor createDoctor(Service service,Nurse nurse,Date workDays,String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String country, String city, String address, String password){
+     public Doctor createDoctor(Service service,Nurse nurse,Date workDays,String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String address, String password){
          Doctor doctorFounded= find(CNI);
          if(doctorFounded== null){
-            doctorFounded= new Doctor(service,nurse,workDays,CNI, lastName, FirstName, sexe, mail, phoneNumber, country, city, address, password);
+            doctorFounded= new Doctor(service,nurse,workDays,CNI, lastName, FirstName, sexe, mail, phoneNumber, address, password);
             create(doctorFounded);
             service.getDoctors().add(doctorFounded);
             nurse.setDoctor(doctorFounded);
@@ -48,7 +48,7 @@ public class DoctorService extends AbstractFacade<Doctor> {
          }
      }
      
-     public Doctor editDoctor(Service service,String CNI, String lastName, String FirstName, String mail, int phoneNumber, String country, String city, String address, String password){
+     public Doctor editDoctor(Service service,String CNI, String lastName, String FirstName, String mail, int phoneNumber, String address, String password){
          Doctor doctorFounded= find(CNI);
            if ( doctorFounded != null){
                Service exService = doctorFounded.getService();
@@ -62,8 +62,6 @@ public class DoctorService extends AbstractFacade<Doctor> {
                doctorFounded.setFirstName(FirstName);
                doctorFounded.setMail(mail);
                doctorFounded.setPhoneNumber(phoneNumber);
-               doctorFounded.setCountry(country);
-               doctorFounded.setCity(city);
                doctorFounded.setAddress(address);
                doctorFounded.setPassword(password);
                edit(doctorFounded);

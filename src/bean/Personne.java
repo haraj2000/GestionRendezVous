@@ -28,8 +28,6 @@ abstract class Personne implements Serializable {
     private String sexe;
     private String mail;
     private int phoneNumber;
-    private String country;
-    private String city;
     private String address;
     private String password;
 
@@ -160,34 +158,6 @@ abstract class Personne implements Serializable {
     }
 
     /**
-     * @return the country
-     */
-    public String getCountry() {
-        return country;
-    }
-
-    /**
-     * @param country the country to set
-     */
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    /**
-     * @return the city
-     */
-    public String getCity() {
-        return city;
-    }
-
-    /**
-     * @param city the city to set
-     */
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    /**
      * @return the address
      */
     public String getAddress() {
@@ -215,15 +185,13 @@ abstract class Personne implements Serializable {
         this.password = password;
     }
 
-    public Personne(String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String country, String city, String address, String password) {
+    public Personne(String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String address, String password) {
         this.CNI = CNI;
         this.lastName = lastName;
         this.FirstName = FirstName;
         this.sexe = sexe;
         this.mail = mail;
         this.phoneNumber = phoneNumber;
-        this.country = country;
-        this.city = city;
         this.address = address;
         this.password = password;
     } 
