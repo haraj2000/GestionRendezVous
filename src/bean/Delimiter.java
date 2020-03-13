@@ -33,6 +33,46 @@ public class Delimiter implements Serializable {
     private Date HourStartWork;
     @OneToOne
     private Doctor doctor;
+
+    public String getDayStopWork() {
+        return dayStopWork;
+    }
+
+    public void setDayStopWork(String dayStopWork) {
+        this.dayStopWork = dayStopWork;
+    }
+
+    public Date getHourStopWork() {
+        return HourStopWork;
+    }
+
+    public void setHourStopWork(Date HourStopWork) {
+        this.HourStopWork = HourStopWork;
+    }
+
+    public String getDayStartWork() {
+        return dayStartWork;
+    }
+
+    public void setDayStartWork(String dayStartWork) {
+        this.dayStartWork = dayStartWork;
+    }
+
+    public Date getHourStartWork() {
+        return HourStartWork;
+    }
+
+    public void setHourStartWork(Date HourStartWork) {
+        this.HourStartWork = HourStartWork;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public void setDoctor(Doctor doctor) {
+        this.doctor = doctor;
+    }
     
     
     
@@ -44,6 +84,16 @@ public class Delimiter implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Delimiter(Long id, String dayStopWork, Date HourStopWork, String dayStartWork, Date HourStartWork, Doctor doctor) {
+        this.id = id;
+        this.dayStopWork = dayStopWork;
+        this.HourStopWork = HourStopWork;
+        this.dayStartWork = dayStartWork;
+        this.HourStartWork = HourStartWork;
+        this.doctor = doctor;
+    }
+    
 
     @Override
     public int hashCode() {
