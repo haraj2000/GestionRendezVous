@@ -42,6 +42,23 @@ public class Doctor  implements Serializable {
     private Specialty specialty;
     @OneToOne
     private Delimiter delimiter;
+
+    public Doctor(Long id, String cin, String lastName, String firstName, String sexe, String mail, int phoneNumber, String address, String password, Date dayBirth, Specialty specialty, Delimiter delimiter) {
+        this.id = id;
+        this.cin = cin;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.sexe = sexe;
+        this.mail = mail;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.password = password;
+        this.dayBirth = dayBirth;
+        this.specialty = specialty;
+        this.delimiter = delimiter;
+    }
+    
+    
      
     public Long getId() {
         return id;
@@ -50,6 +67,95 @@ public class Doctor  implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
+    public String getCin() {
+        return cin;
+    }
+
+    public void setCin(String cin) {
+        this.cin = cin;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Date getDayBirth() {
+        return dayBirth;
+    }
+
+    public void setDayBirth(Date dayBirth) {
+        this.dayBirth = dayBirth;
+    }
+
+    public Specialty getSpecialty() {
+        return specialty;
+    }
+
+    public void setSpecialty(Specialty specialty) {
+        this.specialty = specialty;
+    }
+
+    public Delimiter getDelimiter() {
+        return delimiter;
+    }
+
+    public void setDelimiter(Delimiter delimiter) {
+        this.delimiter = delimiter;
+    }
+    
 
     @Override
     public int hashCode() {
