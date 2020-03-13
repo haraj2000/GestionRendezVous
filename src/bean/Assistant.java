@@ -16,12 +16,20 @@ import javax.persistence.Id;
  * @author Haraj
  */
 @Entity
-public class Assistant extends Personne implements Serializable {
+public class Assistant implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String cin;
+    private String lastName;
+    private String firstName;
+    private String sexe;
+    private String mail;
+    private int phoneNumber;
+    private String address;
+    private String password;
 
 
     public Long getId() {
@@ -32,10 +40,69 @@ public class Assistant extends Personne implements Serializable {
         this.id = id;
     }
 
-    public Assistant(String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String address, String password) {
-        super(CNI, lastName, FirstName, sexe, mail, phoneNumber, address, password);
+    public String getCin() {
+        return cin;
     }
-    
+
+    public void setCin(String cin) {
+        this.cin = cin;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     @Override
     public int hashCode() {

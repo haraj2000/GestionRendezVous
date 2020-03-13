@@ -46,7 +46,7 @@ public class Consultation implements Serializable {
     @OneToOne
     private Checkout checkout;
     @OneToOne
-    private RendezVous rendezVous;
+    private Appointement rendezVous;
 
     public String getReference() {
         return reference;
@@ -137,11 +137,11 @@ public class Consultation implements Serializable {
         this.patient = patient;
     }
 
-    public RendezVous getRendezVous() {
+    public Appointement getRendezVous() {
         return rendezVous;
     }
 
-    public void setRendezVous(RendezVous rendezVous) {
+    public void setRendezVous(Appointement rendezVous) {
         this.rendezVous = rendezVous;
     }
 
@@ -165,7 +165,7 @@ public class Consultation implements Serializable {
         return true;
     }
 
-    public Consultation(String reference, Doctor doctor, Nurse nurse, Patient patient, PatientFile patientFile, RendezVous rendezVous) {
+    public Consultation(String reference, Doctor doctor, Nurse nurse, Patient patient, PatientFile patientFile, Appointement rendezVous) {
         this.reference = reference;
         this.doctor = doctor;
         this.nurse = nurse;

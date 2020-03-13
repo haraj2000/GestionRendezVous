@@ -9,7 +9,7 @@ import bean.Checkout;
 import bean.Consultation;
 import bean.Doctor;
 import bean.Patient;
-import bean.RendezVous;
+import bean.Appointement;
 import java.util.Date;
 /**
  *
@@ -20,7 +20,7 @@ public class CheckoutService extends AbstractFacade<Checkout> {
     public CheckoutService() {
         super(Checkout.class);
     }
-  public Checkout createCheckout(String reference, Double price, RendezVous nextRDV, Patient patient, Doctor doctor, Consultation consultation){
+  public Checkout createCheckout(String reference, Double price, Appointement nextRDV, Patient patient, Doctor doctor, Consultation consultation){
          Checkout checkoutFounded= find(reference);
          if(checkoutFounded== null){
             checkoutFounded= new Checkout(reference, price, nextRDV, patient, doctor, consultation);

@@ -10,7 +10,7 @@ import bean.Doctor;
 import bean.PatientFile;
 import bean.Nurse;
 import bean.Patient;
-import bean.RendezVous;
+import bean.Appointement;
 import java.util.Date;
 
 /**
@@ -23,7 +23,7 @@ public class ConsultationService extends AbstractFacade<Consultation> {
         super(Consultation.class);
     }
       
-       public Consultation createConsultation(String reference, Doctor doctor, Nurse nurse, Patient patient, PatientFile patientFile, RendezVous rendezVous){
+       public Consultation createConsultation(String reference, Doctor doctor, Nurse nurse, Patient patient, PatientFile patientFile, Appointement rendezVous){
          Consultation consultationFounded = find(reference);
          if(consultationFounded== null){
          consultationFounded= new Consultation(reference, doctor, nurse, patient, patientFile, rendezVous);

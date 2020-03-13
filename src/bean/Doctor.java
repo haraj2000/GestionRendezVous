@@ -37,7 +37,7 @@ public class Doctor extends Personne implements Serializable {
     @OneToMany(mappedBy = "doctor")
     private List<PatientFile> patientFiles;
     @OneToMany(mappedBy = "doctor")
-    private List<RendezVous> rendezVous;
+    private List<Appointement> rendezVous;
     @OneToMany(mappedBy = "doctor")
     private List<Consultation> consultations;
     
@@ -83,11 +83,11 @@ public class Doctor extends Personne implements Serializable {
         this.patientFiles = patientFiles;
     }
 
-    public List<RendezVous> getRendezVous() {
+    public List<Appointement> getRendezVous() {
         return rendezVous;
     }
 
-    public void setRendezVous(List<RendezVous> rendezVous) {
+    public void setRendezVous(List<Appointement> rendezVous) {
         this.rendezVous = rendezVous;
     }
 

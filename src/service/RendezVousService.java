@@ -7,25 +7,27 @@ package service;
 
 import bean.Doctor;
 import bean.Patient;
-import bean.RendezVous;
+import bean.Appointement;
+import static bean.Appointement_.typeAppointement;
 import bean.Service;
+import bean.TypeAppointement;
 import java.util.Date;
 
 /**
  *
  * @author Haraj
  */
-public class RendezVousService extends AbstractFacade<RendezVous>{
+public class RendezVousService extends AbstractFacade<Appointement>{
 
     public RendezVousService() {
-        super(RendezVous.class);
+        super(Appointement.class);
     }
     
     
-     public RendezVous createRendezVous(String reference, Date date, Date hour, Patient patient, Doctor doctor, Service service){
-         RendezVous rendezVousFounded = find(reference);
+     public Appointement createRendezVous(String reference, Date date, Date hour, Patient patient, Doctor doctor, TypeAppointement typeAppointement){
+         Appointement rendezVousFounded = find(reference);
          if(rendezVousFounded == null){
-             rendezVousFounded = new RendezVous(reference, date, hour, patient, doctor, service);
+             rendezVousFounded = new Appointement(reference, date, hour, typeAppointement, patient, doctor);
              create(rendezVousFounded);
              doctor.getRendezVous().add(rendezVousFounded);
              patient.getRendezVouses().add(rendezVousFounded);
@@ -34,7 +36,7 @@ public class RendezVousService extends AbstractFacade<RendezVous>{
      }
      
      public int removeRendezVous(String reference){
-         RendezVous rendezVousFounded = find(reference);
+         Appointement rendezVousFounded = find(reference);
          if( rendezVousFounded == null)
              return -1;
          else {
@@ -47,12 +49,12 @@ public class RendezVousService extends AbstractFacade<RendezVous>{
          }
      }
      
-     public RendezVous editRendezVous(String reference, Date date, Date hour, Patient patient, Doctor doctor, Service service)
+     public Appointement editRendezVous(String reference, Date date, Date hour, Patient patient, Doctor doctor, Service service)
      {
-         RendezVous rendezVousFounded = find(reference);
+         Appointement rendezVousFounded = find(reference);
          if( rendezVousFounded != null){
-             rendezVousFounded.setDate(date);
-             rendezVousFounded.setHour(hour);
+             rendezVousFounded.setDateAppointement(date);
+             rendezVousFounded.setHourAppointement(hour);
          
          edit(rendezVousFounded);
          }

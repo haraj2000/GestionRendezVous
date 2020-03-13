@@ -19,7 +19,7 @@ public class AssistantService extends AbstractFacade<Assistant>{
      public Assistant createAssistant(String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String address, String password){
          Assistant assistantFounded= find(CNI);
          if(assistantFounded== null){
-             assistantFounded= new Assistant(CNI, lastName, FirstName, sexe, mail, phoneNumber, address, password);
+             assistantFounded= new Assistant();
              create(assistantFounded);
          }
              return assistantFounded;
