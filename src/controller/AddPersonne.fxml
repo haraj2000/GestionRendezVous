@@ -89,7 +89,7 @@
             <Text layoutX="14.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="81.13671875" />
             <Text layoutX="14.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirm password" wrappingWidth="105.13671875" />
             <Text layoutX="14.0" layoutY="329.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address" wrappingWidth="81.13671875" />
-            <Button layoutX="69.0" layoutY="348.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" style="-fx-background-color: #288E88;" text="Add" />
+            <Button layoutX="131.0" layoutY="351.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" style="-fx-background-color: #288E88;" text="Add" />
             <TextField accessibleText="jjn" layoutX="129.0" layoutY="40.0" prefHeight="25.0" prefWidth="125.0" />
             <TextField layoutX="129.0" layoutY="71.0" prefHeight="25.0" prefWidth="125.0" />
             <TextField layoutX="128.0" layoutY="102.0" prefHeight="25.0" prefWidth="125.0" />
@@ -99,6 +99,7 @@
             <PasswordField layoutX="128.0" layoutY="264.0" prefHeight="25.0" prefWidth="125.0" />
             <ChoiceBox layoutX="131.0" layoutY="6.0" prefHeight="25.0" prefWidth="118.0" />
             <Label layoutX="12.0" layoutY="10.0" text="Type" />
+            <Button layoutX="8.0" layoutY="351.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" style="-fx-background-color: #288E88;" text="Edit" />
          </children>
       </AnchorPane>
    </children>
