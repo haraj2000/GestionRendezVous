@@ -6,43 +6,37 @@
 package bean;
 
 import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
+import java.util.Date;
+import javax.persistence.OneToOne;
 
 /**
  *
- * @author Haraj
+ * @author blackswan
  */
 @Entity
-public class Doctor  implements Serializable {
+public class Delimiter implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id; 
-    private String cin;
-    private String lastName;
-    private String firstName;
-    private String sexe;
-    private String mail;
-    private int phoneNumber;
-    private String address;
-    private String password;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dayBirth;
-    @ManyToOne
-    private Specialty specialty;
+    private Long id;
+    private String dayStopWork;
+    @Temporal(javax.persistence.TemporalType.TIME)
+    private Date HourStopWork;
+     private String dayStartWork;
+    @Temporal(javax.persistence.TemporalType.TIME)
+    private Date HourStartWork;
     @OneToOne
-    private Delimiter delimiter;
-     
+    private Doctor doctor;
+    
+    
+    
+
     public Long getId() {
         return id;
     }
@@ -61,14 +55,19 @@ public class Doctor  implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Doctor)) {
+        if (!(object instanceof Delimiter)) {
             return false;
         }
-        Doctor other = (Doctor) object;
+        Delimiter other = (Delimiter) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "bean.Delimiter[ id=" + id + " ]";
+    }
+    
 }

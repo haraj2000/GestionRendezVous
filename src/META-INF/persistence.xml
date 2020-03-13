@@ -3,6 +3,8 @@
   <persistence-unit name="GestionRendezVousDB" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>bean.TypeAppointement</class>
+    <class>bean.Specialty</class>
+    <class>bean.Delimiter</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/gestion-RDV?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
