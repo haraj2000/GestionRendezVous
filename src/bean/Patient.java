@@ -21,24 +21,26 @@ import javax.persistence.Temporal;
  * @author Haraj
  */
 @Entity
-public class Patient extends Personne implements Serializable {
+public class Patient implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private int age;
+    private String cin;
+    private String lastName;
+    private String firstName;
+    private String sexe;
+    private String mail;
+    private int phoneNumber;
+    private String address;
+    private String password;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dayBirth;
-    @OneToMany(mappedBy = "patient")
-    private List<Consultation> consultations;
     @ManyToMany(mappedBy = "patient")
     private List<Doctor> doctors;
     @OneToMany(mappedBy = "patient")
-    private List<Appointement> rendezVouses;
-    @OneToMany(mappedBy = "patient")
-    private List<PatientFile> patientFiles;
-    
+    private List<Appointement> appointements;
     
     public Long getId() {
         return id;
@@ -48,12 +50,68 @@ public class Patient extends Personne implements Serializable {
         this.id = id;
     }
 
-    public int getAge() {
-        return age;
+    public String getCin() {
+        return cin;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public void setCin(String cin) {
+        this.cin = cin;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public int getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(int phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Date getDayBirth() {
@@ -62,38 +120,6 @@ public class Patient extends Personne implements Serializable {
 
     public void setDayBirth(Date dayBirth) {
         this.dayBirth = dayBirth;
-    }
-
-    public List<Consultation> getConsultations() {
-        return consultations;
-    }
-
-    public void setConsultations(List<Consultation> consultations) {
-        this.consultations = consultations;
-    }
-
-    public List<Doctor> getDoctors() {
-        return doctors;
-    }
-
-    public void setDoctors(List<Doctor> doctors) {
-        this.doctors = doctors;
-    }
-
-    public List<Appointement> getRendezVouses() {
-        return rendezVouses;
-    }
-
-    public void setRendezVouses(List<Appointement> rendezVouses) {
-        this.rendezVouses = rendezVouses;
-    }
-
-    public List<PatientFile> getPatientFiles() {
-        return patientFiles;
-    }
-
-    public void setPatientFiles(List<PatientFile> patientFiles) {
-        this.patientFiles = patientFiles;
     }
 
     @Override
@@ -115,11 +141,4 @@ public class Patient extends Personne implements Serializable {
         }
         return true;
     }
-
-    public Patient(int age, Date dayBirth, String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String country, String city, String address, String password) {
-        super(CNI, lastName, FirstName, sexe, mail, phoneNumber, address, password);
-        this.age = age;
-        this.dayBirth = dayBirth;
-    }
-    
 }

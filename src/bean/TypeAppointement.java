@@ -26,6 +26,7 @@ public class TypeAppointement implements Serializable {
     private Long id;
     private String reference;
     private String libelle;
+    private String price;
     @OneToMany(mappedBy = "typeAppointement")
     private List<Appointement> appointements;
     
@@ -54,6 +55,14 @@ public class TypeAppointement implements Serializable {
         this.libelle = libelle;
     }
 
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
     public List<Appointement> getAppointements() {
         return appointements;
     }
@@ -62,9 +71,10 @@ public class TypeAppointement implements Serializable {
         this.appointements = appointements;
     }
 
-    public TypeAppointement(String reference, String libelle) {
+    public TypeAppointement(String reference, String libelle, String price) {
         this.reference = reference;
         this.libelle = libelle;
+        this.price = price;
     }
 
     @Override

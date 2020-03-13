@@ -9,6 +9,6 @@ package service;
  *
  * @author Haraj
  */
-public class PersonneService {
+public class TypeAppointementService {
     
 }

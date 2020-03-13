@@ -5,19 +5,24 @@
  */
 package service;
 
-import bean.Checkout;
 import bean.Doctor;
 import bean.Patient;
 import bean.Appointement;
+import static bean.Appointement_.typeAppointement;
+import bean.TypeAppointement;
 import java.util.Date;
+
 /**
  *
- * @author blackswan
+ * @author Haraj
  */
-public class CheckoutService extends AbstractFacade<Checkout> {
-    
-    public CheckoutService() {
-        super(Checkout.class);
+public class AppointementService extends AbstractFacade<Appointement>{
+
+    public AppointementService() {
+        super(Appointement.class);
     }
- 
+    
+    
+  
+    
 }

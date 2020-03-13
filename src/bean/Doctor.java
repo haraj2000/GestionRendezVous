@@ -22,27 +22,13 @@ import javax.persistence.Temporal;
  * @author Haraj
  */
 @Entity
-public class Doctor extends Personne implements Serializable {
+public class Doctor  implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    @ManyToOne
-    private Service service;
-    @OneToOne
-    private Nurse nurse;
-     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date workDays;
-    @OneToMany(mappedBy = "doctor")
-    private List<PatientFile> patientFiles;
-    @OneToMany(mappedBy = "doctor")
-    private List<Appointement> rendezVous;
-    @OneToMany(mappedBy = "doctor")
-    private List<Consultation> consultations;
-    
+    private Long id; 
      
-
     public Long getId() {
         return id;
     }
@@ -50,64 +36,6 @@ public class Doctor extends Personne implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
-
-    public Service getService() {
-        return service;
-    }
-
-    public void setService(Service service) {
-        this.service = service;
-    }
-
-    public Date getWorkDays() {
-        return workDays;
-    }
-
-    public void setWorkDays(Date workDays) {
-        this.workDays = workDays;
-    }
-
-    public Nurse getNurse() {
-        return nurse;
-    }
-
-    public void setNurse(Nurse nurse) {
-        this.nurse = nurse;
-    }
-
-    public List<PatientFile> getPatientFiles() {
-        return patientFiles;
-    }
-
-    public void setPatientFiles(List<PatientFile> patientFiles) {
-        this.patientFiles = patientFiles;
-    }
-
-    public List<Appointement> getRendezVous() {
-        return rendezVous;
-    }
-
-    public void setRendezVous(List<Appointement> rendezVous) {
-        this.rendezVous = rendezVous;
-    }
-
-    public List<Consultation> getConsultations() {
-        return consultations;
-    }
-
-    public void setConsultations(List<Consultation> consultations) {
-        this.consultations = consultations;
-    }
-
-    public Doctor(Service service, Nurse nurse, Date workDays, String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String address, String password) {
-        super(CNI, lastName, FirstName, sexe, mail, phoneNumber, address, password);
-        this.service = service;
-        this.nurse = nurse;
-        this.workDays = workDays;
-    }
-
-   
-    
 
     @Override
     public int hashCode() {

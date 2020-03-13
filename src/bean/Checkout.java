@@ -10,7 +10,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 /**
@@ -25,25 +24,10 @@ public class Checkout implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String reference;
-    private Double price;
     @OneToOne
-    private Appointement nextRDV;
-    @ManyToOne
-    private Patient patient; 
-    @ManyToOne
-    private Doctor doctor;
+    private Appointement nextAppointement;
     @OneToOne
-    private Consultation consultation;
-
-
-    public String getReference() {
-        return reference;
-    }
-
-    public void setReference(String reference) {
-        this.reference = reference;
-    }
-    
+    private Appointement currentAppointement;
 
     public Long getId() {
         return id;
@@ -53,55 +37,35 @@ public class Checkout implements Serializable {
         this.id = id;
     }
 
-    public Double getPrice() {
-        return price;
+    public String getReference() {
+        return reference;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public Appointement getNextRDV() {
-        return nextRDV;
-    }
-
-    public void setNextRDV(Appointement nextRDV) {
-        this.nextRDV = nextRDV;
-    }
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
-
-    public Doctor getDoctor() {
-        return doctor;
-    }
-
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
-    }
-
-    public Consultation getConsultation() {
-        return consultation;
-    }
-
-    public void setConsultation(Consultation consultation) {
-        this.consultation = consultation;
-    }
-
-    public Checkout(String reference, Double price, Appointement nextRDV, Patient patient, Doctor doctor, Consultation consultation) {
+    public void setReference(String reference) {
         this.reference = reference;
-        this.price = price;
-        this.nextRDV = nextRDV;
-        this.patient = patient;
-        this.doctor = doctor;
-        this.consultation = consultation;
     }
 
+    public Appointement getNextAppointement() {
+        return nextAppointement;
+    }
+
+    public void setNextAppointement(Appointement nextAppointement) {
+        this.nextAppointement = nextAppointement;
+    }
+
+    public Appointement getCurrentAppointement() {
+        return currentAppointement;
+    }
+
+    public void setCurrentAppointement(Appointement currentAppointement) {
+        this.currentAppointement = currentAppointement;
+    }
+
+    public Checkout(String reference, Appointement nextAppointement, Appointement currentAppointement) {
+        this.reference = reference;
+        this.nextAppointement = nextAppointement;
+        this.currentAppointement = currentAppointement;
+    }
 
     @Override
     public int hashCode() {
