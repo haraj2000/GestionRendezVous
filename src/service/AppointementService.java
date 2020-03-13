@@ -5,13 +5,8 @@
  */
 package service;
 
-import bean.Doctor;
-import bean.Patient;
-import bean.Appointement;
-import static bean.Appointement_.typeAppointement;
-import bean.TypeAppointement;
-import java.util.Date;
 
+import bean.Appointement;
 /**
  *
  * @author Haraj

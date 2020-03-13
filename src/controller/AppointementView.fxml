@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import com.jfoenix.controls.JFXTreeTableRow?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="750.0" style="-fx-background-color: #288E88;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RDVController">
+   <children>
+      <JFXTreeTableRow layoutX="159.0" layoutY="187.0" />
+      <TitledPane animated="false" layoutX="-87.0" layoutY="-89.0" text="untitled" />
+      <AnchorPane layoutX="421.0" layoutY="65.0" prefHeight="321.0" prefWidth="265.0" style="-fx-background-color: #A4ABAA;">
+         <children>
+            <ChoiceBox layoutX="118.0" layoutY="124.0" prefHeight="25.0" prefWidth="132.0" />
+            <JFXDatePicker defaultColor="#00110f" layoutX="127.0" layoutY="19.0" prefHeight="28.0" prefWidth="118.0" promptText=" date" style="-fx-background-color: FFFFFF;" />
+            <Label layoutX="15.0" layoutY="25.0" text="Choose the day" />
+            <Label layoutX="5.0" layoutY="78.0" text="Choose the time hour" />
+            <Label layoutX="10.0" layoutY="128.0" text="Type Appointement" />
+            <ChoiceBox layoutX="118.0" layoutY="168.0" prefHeight="25.0" prefWidth="132.0" />
+            <Label layoutX="33.0" layoutY="172.0" text="Specialty" />
+            <JFXButton buttonType="RAISED" layoutX="144.0" layoutY="276.0" prefHeight="25.0" prefWidth="118.0" style="-fx-background-color: #288E88;" text="Add" textFill="WHITE" />
+            <JFXTimePicker defaultColor="#141414" layoutX="127.0" layoutY="72.0" prefHeight="28.0" prefWidth="118.0" style="-fx-background-color: #FFFFFF;" />
+            <ChoiceBox layoutX="120.0" layoutY="216.0" prefHeight="25.0" prefWidth="132.0" />
+            <Label layoutX="39.0" layoutY="220.0" text="Doctor" />
+            <JFXButton buttonType="RAISED" layoutX="17.0" layoutY="276.0" prefHeight="25.0" prefWidth="118.0" style="-fx-background-color: #288E88;" text="Edit" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+      <TableView layoutX="10.0" layoutY="65.0" prefHeight="237.0" prefWidth="397.0">
+        <columns>
+          <TableColumn prefWidth="73.0" text="Reference" />
+          <TableColumn prefWidth="94.0" text="Date" />
+          <TableColumn minWidth="0.0" prefWidth="58.0" text="Hour" />
+          <TableColumn prefWidth="75.0" text="Type" />
+          <TableColumn prefWidth="96.0" text="Doctor" />
+        </columns>
+      </TableView>
+      <AnchorPane layoutX="47.0" layoutY="316.0" prefHeight="70.0" prefWidth="322.0" style="-fx-background-color: #A4ABAA;">
+         <children>
+            <JFXTextField layoutX="85.0" layoutY="20.0" style="-fx-background-color: #FFFFFF;" />
+            <Label layoutX="17.0" layoutY="24.0" text="Search" />
+            <JFXButton buttonType="RAISED" layoutX="254.0" layoutY="20.0" style="-fx-background-color: #288E88;" text="Delete" />
+         </children>
+      </AnchorPane>
+      <MenuButton mnemonicParsing="false" text="Appointements">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
+        </items>
+      </MenuButton>
+      <JFXTextArea layoutX="127.0" layoutY="-7.0" prefHeight="64.0" prefWidth="559.0" text="You can take an appointement here, or edit if you already took it. You also can see all your appointements. ">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </JFXTextArea>
+   </children>
+</AnchorPane>

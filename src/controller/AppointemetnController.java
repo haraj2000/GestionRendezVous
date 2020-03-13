@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author blackswan
  */
-public class RDVController implements Initializable {
+public class AppointemetnController implements Initializable {
 
     /**
      * Initializes the controller class.
