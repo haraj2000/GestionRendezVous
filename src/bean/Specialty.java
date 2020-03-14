@@ -31,6 +31,7 @@ public class Specialty implements Serializable {
         this.id = id;
         this.libelle = libelle;
         this.doctor = doctor;
+        
     }
 
     
