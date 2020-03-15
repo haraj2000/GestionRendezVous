@@ -5,11 +5,9 @@
  */
 package service;
 
-import bean.Checkout;
-import bean.Doctor;
-import bean.Patient;
 import bean.Appointement;
-import java.util.Date;
+import bean.Checkout;
+
 /**
  *
  * @author blackswan
@@ -19,5 +17,19 @@ public class CheckoutService extends AbstractFacade<Checkout> {
     public CheckoutService() {
         super(Checkout.class);
     }
- 
+    public int createCheckout(String reference, Appointement nextAppointement, Appointement currentAppointement){
+         Checkout checkoutFounded = find(reference);
+        if(checkoutFounded== null){
+            checkoutFounded = new Checkout(reference, nextAppointement, currentAppointement);
+            create(checkoutFounded);
+            return 1;
+         } else
+            return -1;
+    } 
+    public Checkout findByReference(String reference){
+        return (Checkout) getEntityManager().createQuery("SELECT c FROM Checkout c WHERE c.reference = '"+reference + "'").getSingleResult();
+     }
+    public Checkout findByCurrentAppointement(Appointement currentAppointement){
+        return (Checkout) getEntityManager().createQuery("SELECT c FROM Checkout c WHERE c.currentAppointement = '"+currentAppointement + "'").getSingleResult();
+     }
 }
