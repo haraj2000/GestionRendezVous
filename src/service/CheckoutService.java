@@ -14,12 +14,15 @@ import bean.Checkout;
  */
 public class CheckoutService extends AbstractFacade<Checkout> {
     
+    private AppointementService appointementService = new AppointementService();
     public CheckoutService() {
         super(Checkout.class);
     }
     public int createCheckout(String reference, Appointement nextAppointement, Appointement currentAppointement){
          Checkout checkoutFounded = find(reference);
         if(checkoutFounded== null){
+            appointementService.create(nextAppointement);
+            appointementService.find(currentAppointement).setEtatAppointement("paid");
             checkoutFounded = new Checkout(reference, nextAppointement, currentAppointement);
             create(checkoutFounded);
             return 1;

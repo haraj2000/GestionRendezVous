@@ -77,6 +77,9 @@ public class TypeAppointement implements Serializable {
         this.price = price;
     }
 
+    public TypeAppointement() {
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;

@@ -7,11 +7,13 @@ package bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
@@ -38,10 +40,12 @@ public class Doctor  implements Serializable {
     private Date dayBirth;
     @ManyToOne
     private Specialty specialty;
-    @OneToOne
-    private Delimiter delimiter;
+    @OneToMany(mappedBy = "doctor")
+    private List<Delimiter> delimiters;
+    @OneToMany(mappedBy = "docto")
+    private List<Appointement> appointements;
 
-    public Doctor(Long id, String cin, String lastName, String firstName, String sexe, String mail, int phoneNumber, String address, String password, Date dayBirth, Specialty specialty, Delimiter delimiter) {
+    public Doctor(Long id, String cin, String lastName, String firstName, String sexe, String mail, int phoneNumber, String address, String password, Date dayBirth, Specialty specialty) {
         this.id = id;
         this.cin = cin;
         this.lastName = lastName;
@@ -53,7 +57,6 @@ public class Doctor  implements Serializable {
         this.password = password;
         this.dayBirth = dayBirth;
         this.specialty = specialty;
-        this.delimiter = delimiter;
     }
     
     
@@ -146,12 +149,20 @@ public class Doctor  implements Serializable {
         this.specialty = specialty;
     }
 
-    public Delimiter getDelimiter() {
-        return delimiter;
+    public List<Delimiter> getDelimiters() {
+        return delimiters;
     }
 
-    public void setDelimiter(Delimiter delimiter) {
-        this.delimiter = delimiter;
+    public void setDelimiters(List<Delimiter> delimiters) {
+        this.delimiters = delimiters;
+    }
+    
+    public List<Appointement> getAppointements() {
+        return appointements;
+    }
+
+    public void setAppointements(List<Appointement> appointements) {
+        this.appointements = appointements;
     }
     
 

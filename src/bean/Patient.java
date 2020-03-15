@@ -37,8 +37,6 @@ public class Patient implements Serializable {
     private String password;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dayBirth;
-    @ManyToMany(mappedBy = "patient")
-    private List<Doctor> doctors;
     @OneToMany(mappedBy = "patient")
     private List<Appointement> appointements;
     
@@ -120,6 +118,14 @@ public class Patient implements Serializable {
 
     public void setDayBirth(Date dayBirth) {
         this.dayBirth = dayBirth;
+    }
+
+    public List<Appointement> getAppointements() {
+        return appointements;
+    }
+
+    public void setAppointements(List<Appointement> appointements) {
+        this.appointements = appointements;
     }
 
     @Override
