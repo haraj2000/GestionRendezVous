@@ -6,10 +6,12 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -26,6 +28,8 @@ public class Assistant implements Serializable {
     private String lastName;
     private String firstName;
     private String sexe;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dayBirth;
     private String mail;
     private int phoneNumber;
     private String address;
@@ -72,6 +76,14 @@ public class Assistant implements Serializable {
         this.sexe = sexe;
     }
 
+    public Date getDayBirth() {
+        return dayBirth;
+    }
+
+    public void setDayBirth(Date dayBirth) {
+        this.dayBirth = dayBirth;
+    }
+
     public String getMail() {
         return mail;
     }
@@ -101,6 +113,18 @@ public class Assistant implements Serializable {
     }
 
     public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Assistant(String cin, String lastName, String firstName, String sexe, Date dayBirth, String mail, int phoneNumber, String address, String password) {
+        this.cin = cin;
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.sexe = sexe;
+        this.dayBirth = dayBirth;
+        this.mail = mail;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
         this.password = password;
     }
 

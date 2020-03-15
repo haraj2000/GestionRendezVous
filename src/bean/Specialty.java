@@ -6,6 +6,7 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,17 +24,15 @@ public class Specialty implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    private String reference;
     private String libelle;
     @OneToMany(mappedBy = "specialty")
-    private Doctor doctor;
+    private List<Doctor> doctors;
 
-    public Specialty(Long id, String libelle, Doctor doctor) {
-        this.id = id;
+    public Specialty(String reference, String libelle) {
+        this.reference = reference;
         this.libelle = libelle;
-        this.doctor = doctor;
-        
     }
-
     
     public String getLibelle() {
         return libelle;
@@ -43,12 +42,20 @@ public class Specialty implements Serializable {
         this.libelle = libelle;
     }
 
-    public Doctor getDoctor() {
-        return doctor;
+    public List<Doctor> getDoctors() {
+        return doctors;
     }
 
-    public void setDoctor(Doctor doctor) {
-        this.doctor = doctor;
+    public void setDoctors(List<Doctor> doctors) {
+        this.doctors = doctors;
+    }
+
+    public String getReference() {
+        return reference;
+    }
+
+    public void setReference(String reference) {
+        this.reference = reference;
     }
 
     
