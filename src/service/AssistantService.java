@@ -7,6 +7,7 @@ package service;
 
 import bean.Assistant;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -49,5 +50,24 @@ public class AssistantService extends AbstractFacade<Assistant>{
          }
          edit(assistantFounded);
             return assistantFounded;
+     }
+     public List<Assistant> findByCin(String cin){
+        return getEntityManager().createQuery("SELECT a FROM Assistant a WHERE a.cin = '"+cin + "'").getResultList();
+     }
+     public List<Assistant> findByFirstName(String firstName){
+        return getEntityManager().createQuery("SELECT a FROM Assistant a WHERE a.firstName = '"+firstName + "'").getResultList();    
+     }
+     public List<Assistant> findByLastName(String lastName){
+        return getEntityManager().createQuery("SELECT a FROM Assistant a WHERE a.lastName = '"+lastName + "'").getResultList();
+     }
+     public List<Assistant> findByMail(String mail){
+        return getEntityManager().createQuery("SELECT a FROM Assistant a WHERE a.mail = '"+mail + "'").getResultList();
+     }
+     public List<Assistant> findByPhoneNumber(int phoneNumber){
+        return getEntityManager().createQuery("SELECT a FROM Assistant a WHERE a.phoneNumber = "+phoneNumber).getResultList();
+     }
+     @Override
+     public List<Assistant> findAll(){
+        return findAll();         
      }
 }
