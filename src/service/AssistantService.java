@@ -18,18 +18,18 @@ public class AssistantService extends AbstractFacade<Assistant>{
      public AssistantService() {
         super(Assistant.class);
     }
-     public int createAssistant(String CNI, String lastName, String FirstName, String sexe, Date dayBirth, String mail, int phoneNumber, String address, String password){
-         Assistant assistantFounded= find(CNI);
+     public int createAssistant(String cin, String lastName, String FirstName, String sexe, Date dayBirth, String mail, int phoneNumber, String address, String password){
+         Assistant assistantFounded= find(cin);
          if(assistantFounded== null){
-             assistantFounded= new Assistant(CNI, lastName, FirstName, sexe, dayBirth, mail, phoneNumber, address, password);
+             assistantFounded= new Assistant(cin, lastName, FirstName, sexe, dayBirth, mail, phoneNumber, address, password);
              create(assistantFounded);
              return 1;
          }else
              return -1;
      }
      
-     public int removeAssistant(String CNI){
-         Assistant assistantFounded= find(CNI);
+     public int removeAssistant(String cin){
+         Assistant assistantFounded= find(cin);
          if( assistantFounded== null)
              return -1;
          else {
@@ -38,9 +38,9 @@ public class AssistantService extends AbstractFacade<Assistant>{
          }
      }
      
-     public int editAssistant(String CNI, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String address, String password)
+     public int editAssistant(String cin, String lastName, String FirstName, String sexe, String mail, int phoneNumber, String address, String password)
      {
-         Assistant assistantFounded= find(CNI);
+         Assistant assistantFounded= find(cin);
          if( assistantFounded!= null){
                assistantFounded.setLastName(lastName);
                assistantFounded.setFirstName(FirstName);

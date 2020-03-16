@@ -58,10 +58,11 @@
           <MenuItem mnemonicParsing="false" text="Action 2" />
         </items>
       </MenuButton>
-      <JFXTextArea layoutX="127.0" layoutY="-7.0" prefHeight="64.0" prefWidth="559.0" text="You can take an appointement here, or edit if you already took it. You also can see all your appointements. ">
+      <JFXTextArea layoutX="128.0" layoutY="-7.0" prefHeight="64.0" prefWidth="564.0" text="You can take an appointement here, or edit if you already took it. You also can see all your appointements. ">
          <font>
             <Font size="17.0" />
          </font>
       </JFXTextArea>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

@@ -45,8 +45,7 @@ public class Doctor  implements Serializable {
     @OneToMany(mappedBy = "docto")
     private List<Appointement> appointements;
 
-    public Doctor(Long id, String cin, String lastName, String firstName, String sexe, String mail, int phoneNumber, String address, String password, Date dayBirth, Specialty specialty) {
-        this.id = id;
+    public Doctor(String cin, String lastName, String firstName, String sexe, String mail, int phoneNumber, String address, String password, Date dayBirth) {
         this.cin = cin;
         this.lastName = lastName;
         this.firstName = firstName;
