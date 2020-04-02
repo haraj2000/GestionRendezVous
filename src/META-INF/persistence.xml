@@ -2,16 +2,16 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="GestionRendezVous" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>bean.TypeAppointement</class>
-    <class>bean.Specialty</class>
-    <class>bean.Delimiter</class>
     <class>bean.Appointement</class>
-    <class>bean.Assistant</class>
-    <class>bean.Checkout</class>
-    <class>bean.Patient</class>
+    <class>bean.Delimiter</class>
     <class>bean.Doctor</class>
+    <class>bean.Patient</class>
+    <class>bean.TypeAppointement</class>
+    <class>bean.Assistant</class>
+    <class>bean.Specialty</class>
+    <class>bean.Checkout</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/gestion-RDV?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/jribou?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value=""/>

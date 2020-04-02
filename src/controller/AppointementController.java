@@ -14,7 +14,7 @@ import javafx.fxml.Initializable;
  *
  * @author blackswan
  */
-public class AppointemetnController implements Initializable {
+public class AppointementController implements Initializable {
 
     /**
      * Initializes the controller class.

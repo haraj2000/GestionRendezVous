@@ -42,7 +42,7 @@ public class Doctor  implements Serializable {
     private Specialty specialty;
     @OneToMany(mappedBy = "doctor")
     private List<Delimiter> delimiters;
-    @OneToMany(mappedBy = "docto")
+    @OneToMany(mappedBy = "doctor")
     private List<Appointement> appointements;
 
     public Doctor(String cin, String lastName, String firstName, String sexe, String mail, int phoneNumber, String address, String password, Date dayBirth) {
