@@ -13,8 +13,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -26,7 +24,7 @@ public class Doctor  implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id; 
     private String cin;
     private String lastName;
@@ -40,10 +38,8 @@ public class Doctor  implements Serializable {
     private Date dayBirth;
     @ManyToOne
     private Specialty specialty;
-    @OneToMany(mappedBy = "doctor")
-    private List<Delimiter> delimiters;
-    @OneToMany(mappedBy = "doctor")
-    private List<Appointement> appointements;
+    
+    
 
     public Doctor(String cin, String lastName, String firstName, String sexe, String mail, int phoneNumber, String address, String password, Date dayBirth) {
         this.cin = cin;
@@ -147,23 +143,7 @@ public class Doctor  implements Serializable {
     public void setSpecialty(Specialty specialty) {
         this.specialty = specialty;
     }
-
-    public List<Delimiter> getDelimiters() {
-        return delimiters;
-    }
-
-    public void setDelimiters(List<Delimiter> delimiters) {
-        this.delimiters = delimiters;
-    }
-    
-    public List<Appointement> getAppointements() {
-        return appointements;
-    }
-
-    public void setAppointements(List<Appointement> appointements) {
-        this.appointements = appointements;
-    }
-    
+   
 
     @Override
     public int hashCode() {

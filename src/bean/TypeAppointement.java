@@ -22,14 +22,11 @@ public class TypeAppointement implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String reference;
     private String libelle;
     private String price;
-    @OneToMany(mappedBy = "typeAppointement")
-    private List<Appointement> appointements;
-    
 
     public Long getId() {
         return id;
@@ -63,13 +60,6 @@ public class TypeAppointement implements Serializable {
         this.price = price;
     }
 
-    public List<Appointement> getAppointements() {
-        return appointements;
-    }
-
-    public void setAppointements(List<Appointement> appointements) {
-        this.appointements = appointements;
-    }
 
     public TypeAppointement(String reference, String libelle, String price) {
         this.reference = reference;

@@ -17,12 +17,11 @@ public class TypeAppointementService extends AbstractFacade<TypeAppointement>{
         super(TypeAppointement.class);
     }
     public int createTypeAppointement(String reference, String libelle, String price){
-        TypeAppointement typeAppointementFounded = find(reference);
-        if (typeAppointementFounded== null){
-            typeAppointementFounded = new TypeAppointement(reference, libelle, price);
+        
+            TypeAppointement typeAppointementFounded = new TypeAppointement(reference, libelle, price);
             create(typeAppointementFounded);
             return 1;
-        }else return -1;
+       
     }
      public int removeTypeAppointement(String reference){
          TypeAppointement typeAppointementFounded = find(reference);

@@ -6,12 +6,14 @@
 package service;
 
 
-import bean.Appointement;
+
 import bean.Doctor;
 import bean.Patient;
 import bean.TypeAppointement;
 import java.util.Date;
 import java.util.List;
+import bean.Appointement;
+
 /**
  *
  * @author Haraj
@@ -26,7 +28,6 @@ public class AppointementService extends AbstractFacade<Appointement>{
         Appointement appointementFounded = find(appointement.getReference());
         if(appointementFounded== null){
             TypeAppointement appointementType = typeAppointementService.find(appointement.getTypeAppointement().getReference());
-            appointementType.getAppointements().add(appointementFounded);
             appointementFounded= new Appointement(appointement.getReference(), appointement.getDateAppointement(), appointement.getHourAppointement(), appointementType, appointement.getPatient(), appointement.getDoctor());
             appointementFounded.setEtatAppointement("Waiting");
             create(appointementFounded);
@@ -47,11 +48,7 @@ public class AppointementService extends AbstractFacade<Appointement>{
      {
          Appointement appointementFounded = find(reference);
          if( appointementFounded!= null){
-             if(typeAppointement!= appointementFounded.getTypeAppointement())
-             {
-                 typeAppointementService.find(appointementFounded.getTypeAppointement()).getAppointements().remove(appointementFounded);
-                 typeAppointementService.find(typeAppointement.getAppointements().add(appointementFounded));
-             }
+             
                appointementFounded.setDateAppointement(dateAppointement);
                appointementFounded.setHourAppointement(hourAppointement);
                appointementFounded.setTypeAppointement(typeAppointement);

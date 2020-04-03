@@ -24,7 +24,7 @@ public class Patient implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String cin;
     private String lastName;
@@ -36,8 +36,6 @@ public class Patient implements Serializable {
     private String password;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dayBirth;
-    @OneToMany(mappedBy = "patient")
-    private List<Appointement> appointements;
     
     public Long getId() {
         return id;
@@ -119,13 +117,6 @@ public class Patient implements Serializable {
         this.dayBirth = dayBirth;
     }
 
-    public List<Appointement> getAppointements() {
-        return appointements;
-    }
-
-    public void setAppointements(List<Appointement> appointements) {
-        this.appointements = appointements;
-    }
 
     @Override
     public int hashCode() {

@@ -23,24 +23,20 @@ public class Delimiter implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String dayStopWork;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dayStopWork;
     @Temporal(javax.persistence.TemporalType.TIME)
     private Date HourStopWork;
-     private String dayStartWork;
+    @Temporal(javax.persistence.TemporalType.DATE)
+     private Date dayStartWork;
     @Temporal(javax.persistence.TemporalType.TIME)
     private Date HourStartWork;
     @OneToOne
     private Doctor doctor;
 
-    public String getDayStopWork() {
-        return dayStopWork;
-    }
-
-    public void setDayStopWork(String dayStopWork) {
-        this.dayStopWork = dayStopWork;
-    }
+    
 
     public Date getHourStopWork() {
         return HourStopWork;
@@ -50,13 +46,23 @@ public class Delimiter implements Serializable {
         this.HourStopWork = HourStopWork;
     }
 
-    public String getDayStartWork() {
+    public Date getDayStopWork() {
+        return dayStopWork;
+    }
+
+    public void setDayStopWork(Date dayStopWork) {
+        this.dayStopWork = dayStopWork;
+    }
+
+    public Date getDayStartWork() {
         return dayStartWork;
     }
 
-    public void setDayStartWork(String dayStartWork) {
+    public void setDayStartWork(Date dayStartWork) {
         this.dayStartWork = dayStartWork;
     }
+
+    
 
     public Date getHourStartWork() {
         return HourStartWork;
@@ -85,7 +91,7 @@ public class Delimiter implements Serializable {
         this.id = id;
     }
 
-    public Delimiter(Long id, String dayStopWork, Date HourStopWork, String dayStartWork, Date HourStartWork, Doctor doctor) {
+    public Delimiter(Long id, Date dayStopWork, Date HourStopWork, Date dayStartWork, Date HourStartWork, Doctor doctor) {
         this.id = id;
         this.dayStopWork = dayStopWork;
         this.HourStopWork = HourStopWork;

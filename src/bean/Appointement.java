@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package bean;
-
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
@@ -23,7 +22,7 @@ public class Appointement implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String reference;
     @Temporal(javax.persistence.TemporalType.DATE)

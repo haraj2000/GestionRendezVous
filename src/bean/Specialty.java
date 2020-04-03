@@ -6,12 +6,10 @@
 package bean;
 
 import java.io.Serializable;
-import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 /**
  *
@@ -22,12 +20,11 @@ public class Specialty implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String reference;
     private String libelle;
-    @OneToMany(mappedBy = "specialty")
-    private List<Doctor> doctors;
+    
 
     public Specialty(String reference, String libelle) {
         this.reference = reference;
@@ -42,13 +39,6 @@ public class Specialty implements Serializable {
         this.libelle = libelle;
     }
 
-    public List<Doctor> getDoctors() {
-        return doctors;
-    }
-
-    public void setDoctors(List<Doctor> doctors) {
-        this.doctors = doctors;
-    }
 
     public String getReference() {
         return reference;
